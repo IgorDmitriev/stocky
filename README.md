@@ -1,6 +1,9 @@
 # Stocky
 
 ## Background
+  Stocky is a mobile application in which users can trade/sell stock
+at real-world prices with fake money. It is a fun game, that can also
+give users a safe way to experiment in trading stock. 
 
 ## Minimum Viable Product
 The mechanics of the game will be the following:
