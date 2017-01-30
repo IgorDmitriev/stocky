@@ -1,4 +1,4 @@
-package com.frontend;
+package com.stocky;
 
 import android.app.Application;
 import android.util.Log;
