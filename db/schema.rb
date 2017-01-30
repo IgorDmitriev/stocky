@@ -10,11 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20170130200507) do
+=======
 ActiveRecord::Schema.define(version: 20170130194906) do
+>>>>>>> 5908348ea12ca84918ebc8ffbae7bf535a1a63f9
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
+  create_table "companies", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.float    "price",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "company_id", null: false
+    t.float    "shares",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_stocks_on_company_id", using: :btree
+    t.index ["user_id"], name: "index_stocks_on_user_id", using: :btree
+=======
   create_table "transactions", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.integer  "company_id",  null: false
@@ -24,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170130194906) do
     t.datetime "updated_at",  null: false
     t.index ["company_id"], name: "index_transactions_on_company_id", using: :btree
     t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
+>>>>>>> 5908348ea12ca84918ebc8ffbae7bf535a1a63f9
   end
 
 end
