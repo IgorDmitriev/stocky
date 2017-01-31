@@ -4,15 +4,20 @@ import {
   Text,
   View
 } from 'react-native';
-import Login from './components/Login';
+import { Provider } from 'react-redux';
+
+import store from './store';
+import Login from './components/auth/Login';
 
 export default class Stocky extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Welcome to the Facebook SDK for React Native!</Text>
-        <Login />
-      </View>
+      <Provider store={ store }>
+        <View style={styles.container}>
+          <Text>Welcome to the Facebook SDK for React Native!</Text>
+          <Login />
+        </View>
+      </Provider>
     );
   }
 }
