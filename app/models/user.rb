@@ -20,7 +20,7 @@ class User < ApplicationRecord
     rescue
       user.full_name = nil
     end
-    debugger
+
     user
   end
 end
