@@ -11,25 +11,21 @@ import {
   Text,
   View
 } from 'react-native';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import Login from './components/Login';
+
 
 export default class Stocky extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          DAAAAAAAAAAn!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <Text>Welcome to the Facebook SDK for React Native!</Text>
+        <Login />
       </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {

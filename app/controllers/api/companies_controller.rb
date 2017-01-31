@@ -1,6 +1,8 @@
 class Api::CompaniesController < ApplicationController
   def index
-    @companies = Company.all
+    @companies = Company.where('name = ? AND price = ?',
+                                params[:name],
+                                params[:price])
   end
 
   def create
