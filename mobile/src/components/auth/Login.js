@@ -7,6 +7,9 @@ import {
 } from 'react-native';
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render () {
     return (
       <View>
@@ -20,23 +23,7 @@ class Login extends React.Component {
                 alert("login is cancelled.");
               } else {
                 AccessToken.getCurrentAccessToken().then(
-                  (data) => {
-                    fetch('http://localhost:3000/api/login', {
-                      method: 'POST',
-                      headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify({
-                        fbAuth: data
-                      })
-                    })
-                      .then((resp) => {
-                        alert(JSON.parse(resp._bodyText).fullName);
-                      });
-                    // console.log(data);
-                    // alert(data.accessToken.toString());
-                  }
+                  (data) => this.props.login(data)
                 );
               }
             }
