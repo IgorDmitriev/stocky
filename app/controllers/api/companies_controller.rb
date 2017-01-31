@@ -1,8 +1,9 @@
 class Api::CompaniesController < ApplicationController
   def index
-    @companies = Company.where('name = ? AND price = ?',
-                                params[:name],
-                                params[:price])
+    @companies = Company.all
+    # @companies = Company.where('name = ? AND price = ?',
+    #                             params[:name],
+    #                             params[:price])
   end
 
   def create
@@ -27,6 +28,6 @@ class Api::CompaniesController < ApplicationController
 
   private
   def company_params
-    params.require(:company).permit(:name, :price)
+    params.require(:company).permit(:name, :symbol, :price, :price_percent_change)
   end
 end
