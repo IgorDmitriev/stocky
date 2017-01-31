@@ -31,7 +31,9 @@ class Login extends React.Component {
                         fbAuth: data
                       })
                     })
-                      .then((resp) => console.log(resp));
+                      .then((resp) => {
+                        alert(JSON.parse(resp._bodyText).fullName);
+                      });
                     // console.log(data);
                     // alert(data.accessToken.toString());
                   }
