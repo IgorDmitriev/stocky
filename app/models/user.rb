@@ -17,6 +17,7 @@ class User < ApplicationRecord
       graph = Koala::Facebook::API.new(user.fb_access_token)
       profile = graph.get_object("me")
       user.full_name = profile['name']
+      # TODO check unique ID
     rescue
       user.full_name = nil
     end
