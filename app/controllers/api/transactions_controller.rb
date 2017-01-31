@@ -7,8 +7,8 @@ class Api::TransactionsController < ApplicationController
                                       params[:company_id])
   end
 
-  def new
-    @transaction = Transaction.new(transaction_params);
+  def create
+    @transaction = Transaction.new(transaction_params)
     if @transaction.save
       # update or create entry in stock table
 
