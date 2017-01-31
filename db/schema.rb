@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131051049) do
+ActiveRecord::Schema.define(version: 20170131163428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,12 +44,13 @@ ActiveRecord::Schema.define(version: 20170131051049) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "fb_id",           null: false
+    t.string   "fb_id",                              null: false
     t.string   "full_name"
     t.text     "fb_access_token"
     t.string   "session_token"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.float    "money",           default: 100000.0
     t.index ["fb_id"], name: "index_users_on_fb_id", unique: true, using: :btree
     t.index ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
   end
