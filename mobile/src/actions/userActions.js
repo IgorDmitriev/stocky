@@ -9,8 +9,11 @@ export const receiveCurrentUser = currentUser => ({
   currentUser
 });
 
-export const requestLogin = (error, result) => dispatch => {
+export const requestLogin = (data) => dispatch => {
   return serverAPI.login(data).then(
-
-  )
+    (resp) => {
+      const currentUser = JSON.parse(resp._bodyText);
+      dispatch(receiveCurrentUser(currentUser));
+    }
+  );
 };
