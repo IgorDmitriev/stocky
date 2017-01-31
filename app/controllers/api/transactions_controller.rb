@@ -8,6 +8,11 @@ class Api::TransactionsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
+    unless @user && @user.money >= params[:price] * params[:stock_count]
+      return json: ['Not enough money'], status: 400
+    end
+    
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
       # update or create entry in stock table
