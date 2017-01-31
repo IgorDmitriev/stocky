@@ -1,49 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+	AppRegistry
 } from 'react-native';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
-import Login from './components/Login';
+import App from './src/App';
 
-
-export default class Stocky extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Welcome to the Facebook SDK for React Native!</Text>
-        <Login />
-      </View>
-    );
-  }
-}
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('Stocky', () => Stocky);
+AppRegistry.registerComponent('Stocky', () => App);
