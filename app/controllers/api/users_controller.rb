@@ -11,7 +11,6 @@ class Api::UsersController < ApplicationController
   end
 
   def logout
-    debugger
     current_user.reset_session_token!
     render json: "Logged out"
   end
