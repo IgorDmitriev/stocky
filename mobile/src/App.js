@@ -25,10 +25,6 @@ export default class Stocky extends Component {
     }
   }
 
-  handleLogout () {
-
-  }
-
   render() {
     const store = configureStore();
 
