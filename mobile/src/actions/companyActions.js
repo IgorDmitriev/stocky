@@ -1,5 +1,4 @@
-// import * as companyAPI from '../util/companyApi.js';
-//need to make company util
+import * as companyAPI from '../util/companyApi.js';
 
 export const RECEIVE_ALL_COMPANIES = 'RECEIVE_ALL_COMPANIES';
 
