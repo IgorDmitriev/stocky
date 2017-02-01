@@ -24,7 +24,7 @@ class Login extends React.Component {
               } else {
                 AccessToken.getCurrentAccessToken().then(
                   (data) => this.props.login(data)
-                ).then( () => this.props.navigator.push({id: 'Logged in'}));
+                ).then( () => this.props.navigator.push({id: 'UserIndex', index: 1, title: 'My info'}));
               }
             }
           }

@@ -5,6 +5,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 import { Provider } from 'react-redux';
+import { LoginManager } from 'react-native-fbsdk';
 
 import configureStore from './store';
 import AuthScene from './components/auth/AuthSceneContainer';
@@ -15,7 +16,12 @@ export default class Stocky extends Component {
   renderScene (route, navigator) {
     switch (route.id) {
       case 'Auth':
+<<<<<<< HEAD
         // return <AuthScene navigator={ navigator }/>;
+=======
+        return <AuthScene navigator={ navigator }/>;
+      case 'UserIndex':
+>>>>>>> 319e751a87513dabef757218f4ccd1008ed54f5c
         return <UserIndex navigator={ navigator }/>;
       default:
         return <Text>Logged in</Text>;
@@ -27,7 +33,7 @@ export default class Stocky extends Component {
 
     const routes = [
       {id: 'Auth', index: 0, title: 'Login'},
-      {id: 'UserIndex', index: 1, title: 'My info'},
+      {id: 'UserIndex', index: 1, title: 'My info'}
     ];
 
     return (
@@ -42,8 +48,17 @@ export default class Stocky extends Component {
              routeMapper={{
                LeftButton: (route, navigator, index, navState) =>
                 {
-                  if (route.index < 2) {
+                  if (route.index === 0) {
                     return null;
+                  } else if (route.index === 1) {
+                    return (
+                      <TouchableHighlight onPress={() => {
+                          LoginManager.logOut();
+                          navigator.pop();
+                        }}>
+                        <Text>Log out</Text>
+                      </TouchableHighlight>
+                    );
                   } else {
                     return (
                       <TouchableHighlight onPress={() => navigator.pop()}>
