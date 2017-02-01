@@ -4,6 +4,7 @@ import { View,
          StyleSheet,
          Modal,
          TouchableHighlight} from 'react-native';
+import TransactionModalForm from './transactionModalForm.js'
 
 //TODO: Make Transaction form and add it to the MODAL
 
@@ -20,10 +21,10 @@ class CompanyListDetail extends React.Component {
   render() {
     return (
       <View>
-        <Text>{this.company.name}</Text>
-        <Text>${this.company.price}</Text>
-        <Text>{this.company.symbol}</Text>
-        <Text>{this.company.price_percent_change}%</Text>
+        <Text>{this.props.company.name}</Text>
+        <Text>${this.props.company.price}</Text>
+        <Text>{this.props.company.symbol}</Text>
+        <Text>{this.props.company.price_percent_change}%</Text>
       </View>
 
       <Modal
@@ -33,6 +34,7 @@ class CompanyListDetail extends React.Component {
           onRequestClose={() => {alert("Modal has been closed.")}}
           >
 
+          <TransactionModalForm currentUser={this.props.currentUser} company={this.props.company} setModalVisible={this.setModalVisible} />
 
       </Modal>
 

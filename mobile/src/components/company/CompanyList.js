@@ -15,7 +15,7 @@ class CompanyList extends React.Component {
   render () {
     return (
       <ViewList>
-        { this.props.companies.map(company => <CompanyListDetail key={company.id} company={company} /> }
+        { this.props.companies.map(company => <CompanyListDetail key={company.id} company={company} currentUser={this.props.currentUser}/> }
       </ViewList>
     );
   }
