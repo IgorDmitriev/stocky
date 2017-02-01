@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   Navigator,
-  Text
+  Text,
+  TouchableHighlight
 } from 'react-native';
 import { Provider } from 'react-redux';
 
@@ -14,8 +15,8 @@ export default class Stocky extends Component {
   renderScene (route, navigator) {
     switch (route.id) {
       case 'Auth':
-        // return <AuthScene navigator={ navigator }/>;
-        return <UserIndex navigator={ navigator }/>;
+        return <AuthScene navigator={ navigator }/>;
+        // return <UserIndex navigator={ navigator }/>;
       default:
         return <Text>Logged in</Text>;
     }
@@ -23,12 +24,42 @@ export default class Stocky extends Component {
 
   render() {
     const store = configureStore();
+
+    const routes = [
+      {id: 'Auth', index: 0, title: 'Login'},
+      {id: 'UserIndex', index: 1, title: 'My info'},
+    ];
+
     return (
       <Provider store={ store }>
         <Navigator
-          style={{ flex: 1}}
-          initialRoute={{ id: 'Auth', title: 'Log in' }}
-          renderScene={ this.renderScene } />
+          style={{ flex: 1 }}
+          initialRoute={ routes[0] }
+          renderScene={ this.renderScene }
+          initialRouteStack={ routes }
+          navigationBar={
+           <Navigator.NavigationBar
+             routeMapper={{
+               LeftButton: (route, navigator, index, navState) =>
+                {
+                  if (route.index < 2) {
+                    return null;
+                  } else {
+                    return (
+                      <TouchableHighlight onPress={() => navigator.pop()}>
+                        <Text>Back</Text>
+                      </TouchableHighlight>
+                    );
+                  }
+                },
+               RightButton: (route, navigator, index, navState) =>
+                 { return null; },
+               Title: (route, navigator, index, navState) =>
+                 { return (<Text>{route.title}</Text>); }
+             }}
+             style={{backgroundColor: 'gray'}}
+           />
+          } />
       </Provider>
     );
   }
