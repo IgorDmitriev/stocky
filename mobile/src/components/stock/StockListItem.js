@@ -15,6 +15,7 @@ class StockListItem extends React.Component {
     return (
       <View>
         <Text>{this.state.name}</Text>
+        <Text>Number of Shares: {this.state.shares}</Text>
       </View>
     );
   }
