@@ -7,7 +7,6 @@ import {
 
 import Login from './Login';
 
-
 class AuthScene extends React.Component {
   constructor (props) {
     super(props);
@@ -17,7 +16,7 @@ class AuthScene extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Welcome { this.props.currentUser.fullName }</Text>
-        <Login login={ this.props.login }/>
+        <Login login={ this.props.login } navigator={ this.props.navigator }/>
       </View>
     );
   }

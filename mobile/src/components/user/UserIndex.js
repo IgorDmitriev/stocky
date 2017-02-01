@@ -5,7 +5,20 @@ import { StyleSheet,
          ListView } from 'react-native';
 
 import StockListItem from '../stock/StockListItem';
+import Chart from 'react-native-chart';
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+    },
+    chart: {
+        width: 300,
+        height: 100
+    },
+});
 class UserIndex extends React.Component {
   constructor(props) {
     super(props);
@@ -21,8 +34,29 @@ class UserIndex extends React.Component {
    }
 
    render() {
+     const data = [
+          [0, 1],
+          [1, 3],
+          [3, 7],
+          [4, 9],
+          [5, 1],
+          [6, 3],
+          [7, 7],
+          [8, 9],
+      ];
+
      return (
-       <View>
+       <View style={styles.container}>
+         <Chart
+              style={styles.chart}
+              data={data}
+              type="line"
+              showDataPoint={true}
+              showGrid={false}
+              lineWidth={5}
+              color={'#666'}
+              tightBounds={true}
+           />
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(rowData) => <StockListItem stock={rowData}/>}
