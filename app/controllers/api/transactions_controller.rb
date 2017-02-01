@@ -1,10 +1,10 @@
 class Api::TransactionsController < ApplicationController
 
   def index
-    # query params will include user_id and company_id
     @transactions = Transaction.where('user_id = ? AND company_id = ?',
                                       params[:user_id],
                                       params[:company_id])
+    render 'api/transactions/index'
   end
 
   def create
@@ -22,11 +22,10 @@ class Api::TransactionsController < ApplicationController
       return json: ['Cannot sell more shares than owned'], status: 400
     else
       @transaction.save
-      @stock.update_attributes(transaction.params)
+      @stock.update_attributes(shares: @transaction.stock_count)
       @user.update_attributes(money: - @transaction.price *
                                        @transaction.stock_count)
-      # TODO: write the view for stock
-      return status: 200
+      render 'api/transactions/show'
     end
   end
 

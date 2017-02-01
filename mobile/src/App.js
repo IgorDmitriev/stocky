@@ -17,8 +17,12 @@ export default class Stocky extends Component {
   renderScene (route, navigator) {
     switch (route.id) {
       case 'Auth':
+<<<<<<< HEAD
+        // return <AuthScene navigator={ navigator }/>;
+=======
         return <AuthScene navigator={ navigator }/>;
       case 'UserIndex':
+>>>>>>> 319e751a87513dabef757218f4ccd1008ed54f5c
         return <UserIndex navigator={ navigator }/>;
       default:
         return <Text>Logged in</Text>;
