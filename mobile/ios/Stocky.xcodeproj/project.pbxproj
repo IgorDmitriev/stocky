@@ -26,7 +26,6 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		CE2C92612D5B4964A44CD2CB /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16DD30E70D4C9581358D3E /* libRCTFBSDK.a */; };
 		D8084BCE1E412E5C00427C42 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8084BB31E412E4500427C42 /* libART.a */; };
-		D8084BD01E412FC300427C42 /* ios in Resources */ = {isa = PBXBuildFile; fileRef = D8084BCF1E412FC200427C42 /* ios */; };
 		FBE9FC241E3FDA6900FF8FD9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE9FC201E3FDA6900FF8FD9 /* Bolts.framework */; };
 		FBE9FC251E3FDA6900FF8FD9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE9FC211E3FDA6900FF8FD9 /* FBSDKCoreKit.framework */; };
 		FBE9FC261E3FDA6900FF8FD9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE9FC221E3FDA6900FF8FD9 /* FBSDKLoginKit.framework */; };
@@ -257,9 +256,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		BFC7512903FF4936B0DB95C2 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
-		C505BEE2BDCE46FDBC329934 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 		D8084BAE1E412E4500427C42 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
-		D8084BCF1E412FC200427C42 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = "<group>"; };
 		FBE9FC201E3FDA6900FF8FD9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		FBE9FC211E3FDA6900FF8FD9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		FBE9FC221E3FDA6900FF8FD9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -429,7 +426,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				D8084BCF1E412FC200427C42 /* ios */,
 				D8084BAE1E412E4500427C42 /* ART.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -443,7 +439,6 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				BFC7512903FF4936B0DB95C2 /* RCTFBSDK.xcodeproj */,
-				C505BEE2BDCE46FDBC329934 /* RNSVG.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -837,7 +832,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8084BD01E412FC300427C42 /* ios in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
