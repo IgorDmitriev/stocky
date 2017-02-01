@@ -1,7 +1,9 @@
+import { AsyncStorage } from 'react-native';
+import deepFreeze from 'deep-freeze';
+
 import {
   RECEIVE_CURRENT_USER
 } from '../actions/userActions';
-import deepFreeze from 'deep-freeze';
 
 const _nullUser = {
   userID: null,
@@ -12,9 +14,13 @@ const userReducer = (state = _nullUser, action) => {
   deepFreeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
+      const { userID, fullName, sessionToken } = action.currentUser;
+
+      AsyncStorage.setItem('sessionToken', sessionToken);
       return (
         {
-          ...action.currentUser
+          userID,
+          fullName
         }
       );
 

@@ -1,8 +1,12 @@
 import * as serverAPI from '../util/serverApi.js';
-import { AccessToken } from 'react-native-fbsdk';
-
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+
+const _nullUser = {
+  userID: null,
+  fullName: null,
+  sessionToken: ''
+};
 
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
@@ -15,5 +19,11 @@ export const requestLogin = (data) => dispatch => {
       const currentUser = JSON.parse(resp._bodyText);
       dispatch(receiveCurrentUser(currentUser));
     }
+  );
+};
+
+export const requestLogout = () => dispatch => {
+  return serverAPI.logout().then(
+    () => dispatch(receiveCurrentUser(_nullUser))
   );
 };

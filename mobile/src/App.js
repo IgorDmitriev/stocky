@@ -10,6 +10,7 @@ import { LoginManager } from 'react-native-fbsdk';
 import configureStore from './store';
 import AuthScene from './components/auth/AuthSceneContainer';
 import UserIndex from './components/user/UserIndex';
+import { requestLogout } from './actions/userActions';
 
 export default class Stocky extends Component {
 
@@ -22,6 +23,10 @@ export default class Stocky extends Component {
       default:
         return <Text>Logged in</Text>;
     }
+  }
+
+  handleLogout () {
+
   }
 
   render() {
@@ -50,6 +55,7 @@ export default class Stocky extends Component {
                     return (
                       <TouchableHighlight onPress={() => {
                           LoginManager.logOut();
+                          store.dispatch(requestLogout());
                           navigator.pop();
                         }}>
                         <Text>Log out</Text>
