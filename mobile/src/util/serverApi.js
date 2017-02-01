@@ -14,23 +14,19 @@ async function getToken() {
 }
 
 export const login = (data) => (
-  getToken()
-    .then(token => (
-      fetch(
-        'http://localhost:3000/api/login',
-        {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'sessionToken': token
-          },
-          body: JSON.stringify({
-            fbAuth: data
-          })
-        }
-      )
-    ))
+  fetch(
+    'http://localhost:3000/api/login',
+    {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        fbAuth: data
+      })
+    }
+  )
 )
 
 export const logout = () => (

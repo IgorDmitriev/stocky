@@ -5,7 +5,7 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 const _nullUser = {
   userID: null,
   fullName: null,
-  sessionToken: null
+  sessionToken: ''
 };
 
 export const receiveCurrentUser = currentUser => ({
