@@ -10,7 +10,8 @@ export const receiveUsersStocks = stocks => ({
 export const requestUsersStocks = () => dispatch => {
   return fetchUsersStocks().then(
     (resp) => {
-      dispatch(receiveUsersStocks(resp));
+      const stocks = JSON.parse(resp._bodyText);
+      dispatch(receiveUsersStocks(stocks));
     }
   );
 };
