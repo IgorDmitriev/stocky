@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
-import CompanyList from './CompanyList';
+import CompanyDetail from './CompanyDetail';
+import fetchCompany from '../../actions/companyActions';
 
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  companies: state.companies
+  company: state.company
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchAllCompanies: () => dispatch(fetchAllCompanies())
+  fetchCompany: (id) => dispatch(fetchCompany(id))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CompanyList);
+)(CompanyDetail);

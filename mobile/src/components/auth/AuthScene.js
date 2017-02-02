@@ -21,7 +21,7 @@ class AuthScene extends React.Component {
     try {
       const value = await AsyncStorage.getItem('sessionToken');
       if (value !== null){
-        this.props.navigator.push({id: 'Search', index: 3, title: 'Search'});
+        this.props.navigator.push({id: 'ComanyDetail', index: 2, title: 'Company'});
       } else {
         console.warn('No session token');
       }
