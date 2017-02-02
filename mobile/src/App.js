@@ -22,14 +22,8 @@ export default class Stocky extends Component {
         return <AuthScene navigator={ navigator }/>;
       case 'UserIndex':
         return <UserIndex navigator={ navigator }/>;
-<<<<<<< HEAD
-      case 'CompanyList':
-        return  <CompanyListContainer navigator={ navigator }/>;
-=======
-
       case 'CompanyDetail':
         return  <CompanyDetailContainer navigator={ navigator } />
->>>>>>> 3622a76e64b9e6dec7d3ddd36fb2ce19c1de025d
       case 'Search':
         return <SearchScene navigator={ navigator }/>;
       default:
