@@ -13,7 +13,8 @@ const mapStateToProps = state => {
   const filter = state.companies.filter;
 
   const filtered = companies.filter(
-    (company) => company.name.includes(filter.searchText)
+    (company) => company.name.includes(filter.searchText) ||
+                 company.symbol.includes(filter.searchText)
   );
 
   return {

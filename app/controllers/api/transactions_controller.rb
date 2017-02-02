@@ -2,13 +2,13 @@ class Api::TransactionsController < ApplicationController
 
   def index
     @transactions = Transaction.where('user_id = ? AND company_id = ?',
-                                      params[:user_id],
+                                      current_user.id,
                                       params[:company_id])
     render 'api/transactions/index'
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user.id)
     @transaction = Transaction.new(transaction_params)
     @stock = Stock.find_or_create_by(user_id: transaction_params[:user_id],
                                      company_id: transaction_params[:company_id])
