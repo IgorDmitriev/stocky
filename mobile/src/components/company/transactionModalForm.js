@@ -4,7 +4,7 @@ class TransactionModalForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: this.props.currentUser,
+      // user_id: this.props.currentUser,
       company_id: this.props.company.id,
       price: this.props.company.price,
       stock_count: ''
@@ -17,12 +17,14 @@ class TransactionModalForm extends React.Component {
   }
 
   render() {
+    let number = this.props.action === 'buy' ? 1 : -1;
+
     return (
       <View>
         <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
         onChangeText={(stock_count) => this.setState({stock_count})}
-        value={this.state.stock_count}
+        value={number * this.state.stock_count}
         />
 
         <Button

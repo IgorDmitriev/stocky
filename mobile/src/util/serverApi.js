@@ -76,3 +76,20 @@ export const fetchCompanies = (searchText) => (
       )
     ))
 );
+
+export const fetchCompany = (id) => (
+  getToken()
+    .then(token => (
+      fetch(
+        `http://localhost:3000/api/companies/${id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'sessionToken': token
+          }
+        }
+      )
+    ))
+);

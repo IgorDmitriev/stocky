@@ -11,7 +11,7 @@ import configureStore from './store';
 import AuthScene from './components/auth/AuthSceneContainer';
 import SearchScene from './components/search/SearchSceneContainer';
 import UserIndex from './components/user/UserIndex';
-import CompanyListContainer from './components/company/CompanyListContainer';
+import CompanyDetailContainer from './components/company/CompanyDetailContainer';
 import { requestLogout } from './actions/userActions';
 
 export default class Stocky extends Component {
@@ -22,8 +22,14 @@ export default class Stocky extends Component {
         return <AuthScene navigator={ navigator }/>;
       case 'UserIndex':
         return <UserIndex navigator={ navigator }/>;
+<<<<<<< HEAD
       case 'CompanyList':
         return  <CompanyListContainer navigator={ navigator }/>;
+=======
+
+      case 'CompanyDetail':
+        return  <CompanyDetailContainer navigator={ navigator } />
+>>>>>>> 3622a76e64b9e6dec7d3ddd36fb2ce19c1de025d
       case 'Search':
         return <SearchScene navigator={ navigator }/>;
       default:
@@ -37,7 +43,7 @@ export default class Stocky extends Component {
     const routes = [
       {id: 'Auth', index: 0, title: 'Login'},
       {id: 'UserIndex', index: 1, title: 'My info'},
-      {id: 'ComanyList', index: 2, title: 'Company'},
+      {id: 'ComanyDetail', index: 2, title: 'Company'},
       {id: 'Search', index: 3, title: 'Search'}
     ];
 
