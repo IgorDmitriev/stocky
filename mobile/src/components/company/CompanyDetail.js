@@ -8,7 +8,7 @@ import TransactionModalForm from './transactionModalForm.js'
 
 //TODO: Make Transaction form and add it to the MODAL
 
-class CompanyListDetail extends React.Component {
+class CompanyDetail extends React.Component {
   constructor(props) {
     super(props);
     state = { modalVisible: false }
@@ -48,4 +48,4 @@ class CompanyListDetail extends React.Component {
   }
 }
 
-export default CompanyListDetail;
+export default CompanyDetail;

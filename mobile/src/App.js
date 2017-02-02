@@ -10,7 +10,7 @@ import { LoginManager } from 'react-native-fbsdk';
 import configureStore from './store';
 import AuthScene from './components/auth/AuthSceneContainer';
 import UserIndex from './components/user/UserIndex';
-import CompanyListContainer from './components/company/CompanyListContainer';
+import CompanyDetailContainer from './components/company/CompanyDetailContainer';
 import { requestLogout } from './actions/userActions';
 
 export default class Stocky extends Component {
@@ -22,7 +22,7 @@ export default class Stocky extends Component {
       case 'UserIndex':
         return <UserIndex navigator={ navigator }/>;
       case 'CompanyList':
-        return  <CompanyListContainer navigator={ navigator }/>
+        return  <CompanyDetailContainer navigator={ navigator }/>
       default:
         return <Text>Logged in</Text>;
     }

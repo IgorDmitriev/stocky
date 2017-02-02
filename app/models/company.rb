@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
   validates :name, :price, presence: true
 
-  after_initialize :update_company
+  before_create :update_company
 
   has_many :stocks
   has_many :transactions

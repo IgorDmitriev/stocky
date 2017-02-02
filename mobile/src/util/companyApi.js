@@ -7,3 +7,13 @@ export const fetchAllCompanies = () => (
     }
   })
 );
+
+export const fetchCompany = (id) => (
+  fetch(`http://localhost:3000/api/companies/${id}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  })
+);
