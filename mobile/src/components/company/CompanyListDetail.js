@@ -1,4 +1,4 @@
-import React { Component } from 'react';
+import React from 'react';
 import { View,
          Text,
          StyleSheet,
@@ -25,13 +25,12 @@ class CompanyListDetail extends React.Component {
         <Text>${this.props.company.price}</Text>
         <Text>{this.props.company.symbol}</Text>
         <Text>{this.props.company.price_percent_change}%</Text>
-      </View>
 
       <Modal
           animationType={"slide"}
           transparent={false}
           visible={this.state.modalVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}
+          onRequestClose={this.setModalVisible(false)}
           >
 
           <TransactionModalForm currentUser={this.props.currentUser} company={this.props.company} setModalVisible={this.setModalVisible} />
@@ -44,6 +43,7 @@ class CompanyListDetail extends React.Component {
         <Text>Buy/Sell</Text>
       </TouchableHighlight>
 
+    </View>
     );
   }
 }
