@@ -2,7 +2,11 @@ class User < ApplicationRecord
   validates :full_name, presence: true
   validates :session_token, presence: true, uniqueness: true
 
+  has_many :stocks
+
+  # before_save :fetch_full_name
   after_initialize :ensure_session_token
+
 
   def self.find_for_facebook_auth(fb_auth)
 
@@ -24,6 +28,15 @@ class User < ApplicationRecord
     end
 
     user
+  end
+
+  def total_worth
+    stocks = self.stocks.includes(:company)
+    stock_sum = 0
+    stocks.each do |stock|
+      stock_sum += stock.shares * stock.company.price
+    end
+    self.money + stock_sum
   end
 
   def reset_session_token!
