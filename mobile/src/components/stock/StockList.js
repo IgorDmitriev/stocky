@@ -9,15 +9,12 @@ class StockList extends React.Component {
 
     this.state = {
       // this array will be filled with the stock objects that the user own
-      dataSource: ds.cloneWithRows(['stock 1',
-                                    'stock 2',
-                                    'stock 3',
-                                    'stock 4',
-                                    'stock 5',
-                                    'stock 6',
-                                    'stock 7',
-                                    'stock 8']),
+      stocks: ds.cloneWithRows(props.stocks),
     };
+  }
+
+  componentDidMount() {
+    this.props.fetchUsersStocks();
   }
 
   render() {
@@ -25,7 +22,7 @@ class StockList extends React.Component {
       <View>
         <Text>Stocks Owned</Text>
         <ListView
-          dataSource={this.state.dataSource}
+          dataSource={this.state.stocks}
           renderRow={(rowData) => <Text>{rowData}</Text>}
         />
       </View>

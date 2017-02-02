@@ -1,6 +1,6 @@
 class Api::StocksController < ApplicationController
   def index
-    @stocks = Stock.where('user_id = ?', params[:user_id])
+    @stocks = Stock.where('user_id = ?', @current_user.id)
   end
 
   def create
