@@ -57,5 +57,22 @@ export const fetchUsersStocks = () => (
           'sessionToken': token
         }
       })
+   ))       
+);
+
+export const fetchCompanies = (searchText) => (
+  getToken()
+    .then(token => (
+      fetch(
+        'http://localhost:3000/api/companies',
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'sessionToken': token
+          }
+        }
+      )
     ))
 );

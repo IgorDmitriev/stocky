@@ -3,7 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
-  ViewList
+  ListView
 } from 'react-native';
 import CompanyListDetail from './CompanyListDetail.js'
 
@@ -14,9 +14,9 @@ class CompanyList extends React.Component {
 
   render () {
     return (
-      <ViewList>
-        { this.props.companies.map(company => <CompanyListDetail key={company.id} company={company} /> }
-      </ViewList>
+      <ListView>
+        { this.props.companies.map(company => <CompanyListDetail key={company.id} company={company} currentUser={this.props.currentUser}/>) }
+      </ListView>
     );
   }
 }

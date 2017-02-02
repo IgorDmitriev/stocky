@@ -9,7 +9,9 @@ import { LoginManager } from 'react-native-fbsdk';
 
 import configureStore from './store';
 import AuthScene from './components/auth/AuthSceneContainer';
+import SearchScene from './components/search/SearchSceneContainer';
 import UserIndex from './components/user/UserIndex';
+import CompanyListContainer from './components/company/CompanyListContainer';
 import { requestLogout } from './actions/userActions';
 
 export default class Stocky extends Component {
@@ -20,6 +22,11 @@ export default class Stocky extends Component {
         return <AuthScene navigator={ navigator }/>;
       case 'UserIndex':
         return <UserIndex navigator={ navigator }/>;
+
+      case 'CompanyList':
+        return  <CompanyListContainer navigator={ navigator }/>
+      case 'Search':
+        return <SearchScene navigator={ navigator }/>;
       default:
         return <Text>Logged in</Text>;
     }
@@ -30,7 +37,9 @@ export default class Stocky extends Component {
 
     const routes = [
       {id: 'Auth', index: 0, title: 'Login'},
-      {id: 'UserIndex', index: 1, title: 'My info'}
+      {id: 'UserIndex', index: 1, title: 'My info'},
+      {id: 'ComanyList', index: 2, title: 'Company'},
+      {id: 'Search', index: 3, title: 'Search'}
     ];
 
     return (
