@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import CompanyList from './CompanyList';
+import CompanyDetail from './CompanyDetail';
+import fetchCompany from '../../actions/companyActions';
 
 
 const mapStateToProps = state => ({
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CompanyList);
+)(CompanyDetail);

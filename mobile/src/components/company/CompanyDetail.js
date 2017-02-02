@@ -15,6 +15,10 @@ class CompanyDetail extends React.Component {
               modalVisible2: false }
   }
 
+  ComponentDidMount() {
+    this.props.fetchCompany(this.props.companyId)
+  }
+
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
@@ -34,7 +38,7 @@ class CompanyDetail extends React.Component {
         <TouchableHighlight onPress={() => {
             this.setModalVisible(true)
           }}>
-          <Text>Sell</Text>
+          <Text>Buy</Text>
         </TouchableHighlight>
 
         <TouchableHighlight onPress={() => {
@@ -50,7 +54,7 @@ class CompanyDetail extends React.Component {
           onRequestClose={this.setModalVisible(false)}
           >
 
-          <TransactionModalForm company={this.props.company} setModalVisible={this.setModalVisible} />
+          <TransactionModalForm company={this.props.company} setModalVisible={this.setModalVisible} action='buy'/>
 
       </Modal>
 
@@ -61,7 +65,7 @@ class CompanyDetail extends React.Component {
           onRequestClose={this.setModalVisible2(false)}
           >
 
-          <TransactionModalForm company={this.props.company} setModalVisible={this.setModalVisible2} />
+          <TransactionModalForm company={this.props.company} setModalVisible={this.setModalVisible2} action='sell'/>
 
       </Modal>
 

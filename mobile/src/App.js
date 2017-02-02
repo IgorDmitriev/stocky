@@ -23,14 +23,10 @@ export default class Stocky extends Component {
       case 'UserIndex':
         return <UserIndex navigator={ navigator }/>;
 
-      case 'CompanyList':
-<<<<<<< HEAD
-        return  <CompanyDetailContainer navigator={ navigator }/>
-=======
-        return  <CompanyListContainer navigator={ navigator }/>
+      case 'CompanyDetail':
+        return  <CompanyDetailContainer navigator={ navigator } />
       case 'Search':
         return <SearchScene navigator={ navigator }/>;
->>>>>>> dda05477a192671014794a49cb639ea2da14ae3b
       default:
         return <Text>Logged in</Text>;
     }
@@ -42,7 +38,7 @@ export default class Stocky extends Component {
     const routes = [
       {id: 'Auth', index: 0, title: 'Login'},
       {id: 'UserIndex', index: 1, title: 'My info'},
-      {id: 'ComanyList', index: 2, title: 'Company'},
+      {id: 'ComanyDetail', index: 2, title: 'Company'},
       {id: 'Search', index: 3, title: 'Search'}
     ];
 

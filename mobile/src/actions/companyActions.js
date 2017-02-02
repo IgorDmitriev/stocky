@@ -13,8 +13,8 @@ export const receiveCompany = company => ({
   company
 });
 
-export const fetchAllCompanies = () => dispatch => {
-  return companyAPI.fetchAllCompanies().then(
+export const fetchCompanies = () => dispatch => {
+  return companyAPI.fetchCompanies().then(
     (resp) => {
       dispatch(receiveAllCompanies(resp));
     }

@@ -46,7 +46,7 @@ export const logout = () => (
     ))
 );
 
-export const fetchAllCompanies = (searchText) => (
+export const fetchCompanies = (searchText) => (
   getToken()
     .then(token => (
       fetch(
