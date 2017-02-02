@@ -22,9 +22,8 @@ export default class Stocky extends Component {
         return <AuthScene navigator={ navigator }/>;
       case 'UserIndex':
         return <UserIndex navigator={ navigator }/>;
-
       case 'CompanyList':
-        return  <CompanyListContainer navigator={ navigator }/>
+        return  <CompanyListContainer navigator={ navigator }/>;
       case 'Search':
         return <SearchScene navigator={ navigator }/>;
       default:
@@ -48,7 +47,7 @@ export default class Stocky extends Component {
           style={{ flex: 1 }}
           initialRoute={ routes[0] }
           renderScene={ this.renderScene }
-          initialRouteStack={ routes }
+          initialRouteStack={ [routes[0]] }
           navigationBar={
            <Navigator.NavigationBar
              routeMapper={{

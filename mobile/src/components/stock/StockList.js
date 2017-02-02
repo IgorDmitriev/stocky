@@ -5,12 +5,9 @@ import { View,
 class StockList extends React.Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
-    this.state = {
-      // this array will be filled with the stock objects that the user own
-      stocks: ds.cloneWithRows(props.stocks),
-    };
+
   }
 
   componentDidMount() {
@@ -18,11 +15,12 @@ class StockList extends React.Component {
   }
 
   render() {
+    const stocks = this.ds.cloneWithRows(this.props.stocks);
     return(
       <View>
         <Text>Stocks Owned</Text>
         <ListView
-          dataSource={this.state.stocks}
+          dataSource={stocks}
           renderRow={(rowData) => <Text>{rowData}</Text>}
         />
       </View>
