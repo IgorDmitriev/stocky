@@ -11,11 +11,16 @@ import TransactionModalForm from './transactionModalForm.js'
 class CompanyDetail extends React.Component {
   constructor(props) {
     super(props);
-    state = { modalVisible: false }
+    state = { modalVisible: false,
+              modalVisible2: false }
   }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
+  }
+
+  setModalVisible2(visible) {
+    this.setState({modalVisible2: visible});
   }
 
   render() {
@@ -26,6 +31,18 @@ class CompanyDetail extends React.Component {
         <Text>{this.props.company.symbol}</Text>
         <Text>{this.props.company.price_percent_change}%</Text>
 
+        <TouchableHighlight onPress={() => {
+            this.setModalVisible(true)
+          }}>
+          <Text>Sell</Text>
+        </TouchableHighlight>
+
+        <TouchableHighlight onPress={() => {
+            this.setModalVisible2(true)
+          }}>
+          <Text>Sell</Text>
+        </TouchableHighlight>
+
       <Modal
           animationType={"slide"}
           transparent={false}
@@ -33,15 +50,21 @@ class CompanyDetail extends React.Component {
           onRequestClose={this.setModalVisible(false)}
           >
 
-          <TransactionModalForm currentUser={this.props.currentUser} company={this.props.company} setModalVisible={this.setModalVisible} />
+          <TransactionModalForm company={this.props.company} setModalVisible={this.setModalVisible} />
 
       </Modal>
 
-      <TouchableHighlight onPress={() => {
-          this.setModalVisible(true)
-      }}>
-        <Text>Buy/Sell</Text>
-      </TouchableHighlight>
+      <Modal
+          animationType={"slide"}
+          transparent={false}
+          visible={this.state.modalVisible2}
+          onRequestClose={this.setModalVisible2(false)}
+          >
+
+          <TransactionModalForm company={this.props.company} setModalVisible={this.setModalVisible2} />
+
+      </Modal>
+
 
     </View>
     );

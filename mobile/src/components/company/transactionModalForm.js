@@ -4,7 +4,7 @@ class TransactionModalForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: this.props.currentUser,
+      // user_id: this.props.currentUser,
       company_id: this.props.company.id,
       price: this.props.company.price,
       stock_count: ''

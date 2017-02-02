@@ -4,11 +4,11 @@ import CompanyList from './CompanyList';
 
 const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  companies: state.companies
+  company: state.company
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchAllCompanies: () => dispatch(fetchAllCompanies())
+  fetchCompany: (id) => dispatch(fetchCompany(id))
 });
 
 export default connect(
