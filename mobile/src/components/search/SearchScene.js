@@ -7,6 +7,8 @@ import {
   ListView,
   TextInput
 } from 'react-native';
+import CompanySearchListItem from './CompanySearchListItem';
+
 
 class SearchScene extends React.Component {
   constructor (props) {
@@ -45,7 +47,7 @@ class SearchScene extends React.Component {
         <ListView
           dataSource={dataSource}
           enableEmptySections={true}
-          renderRow={(rowData) => <Text>{rowData.name} {rowData.price}</Text>}
+          renderRow={(rowData) => <CompanySearchListItem company={rowData} navigator={this.props.navigator}/>}
         />
       </View>
     );
