@@ -2,7 +2,8 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  AsyncStorage
 } from 'react-native';
 
 import Login from './Login';
@@ -10,6 +11,23 @@ import Login from './Login';
 class AuthScene extends React.Component {
   constructor (props) {
     super(props);
+  }
+
+  componentWillMount () {
+    this.getToken();
+  }
+
+  async getToken() {
+    try {
+      const value = await AsyncStorage.getItem('sessionToken');
+      if (value !== null){
+        this.props.navigator.push({id: 'UserIndex', index: 1, title: 'My info'});
+      } else {
+        console.warn('No session token');
+      }
+    } catch (error) {
+      console.warn('Error when getting session token');
+    }
   }
 
   render () {
