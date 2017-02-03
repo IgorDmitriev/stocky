@@ -25,7 +25,7 @@ class UserIndex extends React.Component {
      return (
        <View style={styles.container}>
         <UserHistoryContainer/>
-        <StockListContainer/>
+        <StockListContainer navigator={this.props.navigator}/>
        </View>
      );
    }

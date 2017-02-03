@@ -1,1 +1,4 @@
-json.extract! stock, :id, :user_id, :company_id, :shares
+json.extract! stock, :id, :shares
+json.set! :userId, stock.user_id
+json.set! :companyId, stock.company_id
+json.set! :companyName, stock.company.name

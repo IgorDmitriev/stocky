@@ -57,7 +57,7 @@ export const fetchUsersStocks = () => (
           'sessionToken': token
         }
       })
-   ))       
+   ))
 );
 
 export const fetchCompanies = (searchText) => (
