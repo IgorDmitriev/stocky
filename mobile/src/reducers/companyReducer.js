@@ -8,8 +8,9 @@ const _nullCompany = {
   name: null,
   price: null,
   symbol: null,
-  price_percent_change: null
-}
+  price_percent_change: null,
+  history:[[0,0]]
+};
 
 const companyReducer = (state = _nullCompany, action) => {
   deepFreeze(state);
