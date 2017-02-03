@@ -9,7 +9,7 @@ const CompanySearchListItem =
   ({ company, navigator }) => (
     <TouchableHighlight
       onPress={() => navigator.push({
-        id: 'CompanyDetails',
+        id: 'CompanyDetail',
         index: 2,
         title: company.name,
         companyId: company.id

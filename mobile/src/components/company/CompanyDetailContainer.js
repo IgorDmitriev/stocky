@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
 import CompanyDetail from './CompanyDetail';
-import fetchCompany from '../../actions/companyActions';
+import { fetchCompany } from '../../actions/companyActions';
 
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser,
   company: state.company
 });
 

@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Button
+ } from 'react-native';
 
 class TransactionModalForm extends React.Component {
   constructor(props) {
@@ -20,7 +26,7 @@ class TransactionModalForm extends React.Component {
     let number = this.props.action === 'buy' ? 1 : -1;
 
     return (
-      <View>
+      <View style={{marginTop:100}}>
         <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
         onChangeText={(stock_count) => this.setState({stock_count})}
