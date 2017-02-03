@@ -24,9 +24,14 @@ class Company < ApplicationRecord
     today = Time.now
     month_ago = Time.now - (30 * 24 * 60 * 60)
     history = StockQuote::Stock.quote(self.symbol,
-                                      today.strftime("%Y-%m-%d"),
                                       month_ago.strftime("%Y-%m-%d"),
+                                      today.strftime("%Y-%m-%d"),
                                       ['Close'])
-    history.map(&:close)
+    array = []
+    history.each_with_index do |hist, i|
+      array << [(month_ago + (i * 24 * 60 * 60)).strftime("%m/%d"),
+                hist.close]
+    end
+    array
   end
 end
