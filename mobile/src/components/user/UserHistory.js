@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const data = [
+let data = [
         ['1/1', 100],
         ['1/2', 300],
         ['1/3', 200],
@@ -30,8 +30,12 @@ class UserHistory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: data
+      history: this.props
     };
+  }
+
+  componentDidMount() {
+    this.props.fetchHistory();
   }
 
   render() {
@@ -43,7 +47,7 @@ class UserHistory extends React.Component {
            dataPointRadius={0}
            lineWidth={2}
            gridColor={'#DDD'}
-           data={this.state.history}
+           data={data}
            type="line"
            showDataPoint={true}
            color={'green'}
