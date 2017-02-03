@@ -30,7 +30,9 @@ class UserHistory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: this.props
+      history: this.props.history.map(hist => (
+        [hist.date, hist.money]
+      ))
     };
   }
 
