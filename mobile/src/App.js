@@ -23,7 +23,7 @@ export default class Stocky extends Component {
       case 'UserIndex':
         return <UserIndex navigator={ navigator }/>;
       case 'CompanyDetail':
-        return  <CompanyDetailContainer navigator={ navigator } />
+        return  <CompanyDetailContainer navigator={ navigator } companyId={route.companyId} />
       case 'Search':
         return <SearchScene navigator={ navigator }/>;
       default:

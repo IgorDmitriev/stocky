@@ -1,10 +1,10 @@
 import * as companyAPI from '../util/serverApi.js';
 
-export const RECEIVE_ALL_COMPANIES = 'RECEIVE_ALL_COMPANIES';
-export const RECEIVE_COMPANY = 'RECEIVE_ALL_COMPANIES';
+export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
+export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
 
-export const receiveAllCompanies = companies => ({
-  type: RECEIVE_ALL_COMPANIES,
+export const receiveCompanies = companies => ({
+  type: RECEIVE_COMPANIES,
   companies
 });
 
@@ -16,15 +16,17 @@ export const receiveCompany = company => ({
 export const fetchCompanies = () => dispatch => {
   return companyAPI.fetchCompanies().then(
     (resp) => {
-      dispatch(receiveAllCompanies(resp));
+      const companies = JSON.parse(resp._bodyText);
+      dispatch(receiveCompanies(companies));
     }
   );
 };
 
 export const fetchCompany = (id) => dispatch => {
-  return companyAPI.fetchCompany().then(
+  return companyAPI.fetchCompany(id).then(
     (resp) => {
-      dispatch(receiveCompany(resp))
+      const company = JSON.parse(resp._bodyText);
+      return dispatch(receiveCompany(company));
     }
   );
 };

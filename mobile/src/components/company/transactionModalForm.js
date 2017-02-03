@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  View,
+  TextInput,
+  Button
+ } from 'react-native';
 
 class TransactionModalForm extends React.Component {
   constructor(props) {
