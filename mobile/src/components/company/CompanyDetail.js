@@ -11,7 +11,8 @@ import TransactionModalForm from './transactionModalForm.js'
 class CompanyDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalVisible: false,
+    this.state = {
+              modalVisible: false,
               modalVisible2: false }
 
     this.setModalVisible = this.setModalVisible.bind(this);
@@ -29,7 +30,7 @@ class CompanyDetail extends React.Component {
   }
 
   setModalVisible2(visible) {
-    // this.setState({modalVisible2: visible});
+    this.setState({modalVisible2: visible});
   }
 
   render() {
@@ -67,7 +68,7 @@ class CompanyDetail extends React.Component {
           animationType={"slide"}
           transparent={false}
           visible={this.state.modalVisible2}
-          onRequestClose={this.setModalVisible2(false)}
+          onRequestClose={() => this.setModalVisible2(false)}
           >
 
           <TransactionModalForm company={this.props.company} setModalVisible={this.setModalVisible2} action='sell'/>
