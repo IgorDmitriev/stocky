@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
   def login
     @user = User.find_for_facebook_auth(auth_params)
-
+    
     if @user.save
       render :show
     else
