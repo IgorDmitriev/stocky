@@ -11,7 +11,7 @@ export const requestUsersStocks = () => dispatch => {
   return fetchUsersStocks().then(
     (resp) => {
       const stocks = JSON.parse(resp._bodyText);
-      dispatch(receiveUsersStocks(stocks));
+      return dispatch(receiveUsersStocks(stocks));
     }
   );
 };
