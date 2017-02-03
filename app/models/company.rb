@@ -29,8 +29,8 @@ class Company < ApplicationRecord
                                       ['Close'])
     array = []
     history.each_with_index do |hist, i|
-      array << [(month_ago + (i * 24 * 60 * 60)).strftime("%m/%d"),
-                hist.close]
+      date = (i % 5 == 0) ? (month_ago + (i * 24 * 60 * 60)).strftime("%m/%d") : ''
+      array << [date, hist.close]
     end
     array
   end

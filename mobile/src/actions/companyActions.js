@@ -24,9 +24,5 @@ export const fetchCompanies = () => dispatch => {
 
 export const fetchCompany = (id) => dispatch => {
   return companyAPI.fetchCompany(id).then(
-    (resp) => {
-      const company = JSON.parse(resp._bodyText);
-      return dispatch(receiveCompany(company));
-    }
-  );
+    (resp) => resp.json()).then( json => dispatch(receiveCompany(json)));
 };
