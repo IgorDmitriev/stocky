@@ -1,24 +1,23 @@
 import React from 'react';
 import { View,
          Text,
-         StyleSheet } from 'react-native';
+         StyleSheet,
+         TouchableHighlight
+       } from 'react-native';
 
-class StockListItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: this.props.stock
-    };
-  }
-
-  render() {
-    return (
-      <View>
-        <Text>{this.state.name}</Text>
-        <Text>Number of Shares: {this.state.shares}</Text>
-      </View>
-    );
-  }
-}
+const StockListItem = ({navigator, stock}) => (
+  <TouchableHighlight
+    onPress={() => navigator.push({
+      id: 'CompanyDetails',
+      index: 2,
+      title: stock.companyName,
+      companyId: stock.companyId
+    })}>
+    <View>
+      <Text>{stock.companyName}</Text>
+      <Text>{stock.shares} shares</Text>
+    </View>
+  </TouchableHighlight>
+);
 
 export default StockListItem;
