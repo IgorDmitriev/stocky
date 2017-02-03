@@ -49,7 +49,7 @@ export const logout = () => (
 export const fetchUsersStocks = () => (
   getToken()
     .then(token => (
-      fetch(`http://localhost:3000/api/stocks`, {
+      fetch('http://localhost:3000/api/stocks', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -58,6 +58,20 @@ export const fetchUsersStocks = () => (
         }
       })
    ))
+);
+
+export const fetchHistory = () => (
+  getToken()
+    .then(token => (
+        fetch('http://localhost:3000/api/histories', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'sessionToken': token
+          }
+        })
+    ))
 );
 
 export const fetchCompanies = (searchText) => (

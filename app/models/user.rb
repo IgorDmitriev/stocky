@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :session_token, presence: true, uniqueness: true
 
   has_many :stocks
+  has_many :histories
 
   # before_save :fetch_full_name
   after_initialize :ensure_session_token
