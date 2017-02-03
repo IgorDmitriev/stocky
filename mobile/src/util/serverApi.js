@@ -107,3 +107,23 @@ export const fetchCompany = (id) => (
       )
     ))
 );
+
+export const createTransaction = (data) => (
+  getToken()
+    .then(token => (
+      fetch(
+        `http://localhost:3000/api/transactions/`,
+        {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'sessionToken': token
+          },
+          body: JSON.stringify({
+            data
+          })
+        }
+      )
+    ))
+);

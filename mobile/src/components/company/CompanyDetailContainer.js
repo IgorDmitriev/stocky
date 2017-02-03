@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import CompanyDetail from './CompanyDetail';
 import { fetchCompany } from '../../actions/companyActions';
+import { createTransaction } from '../../actions/transactionActions';
 
 
 const mapStateToProps = state => ({
@@ -8,7 +9,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCompany: (id) => dispatch(fetchCompany(id))
+  fetchCompany: (id) => dispatch(fetchCompany(id)),
+  createTransaction: (transaction) => dispatch(createTransaction(transaction))
 });
 
 export default connect(

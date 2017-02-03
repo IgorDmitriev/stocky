@@ -10,16 +10,18 @@ class Api::TransactionsController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @transaction = Transaction.new(transaction_params)
-    @stock = Stock.find_or_create_by(user_id: transaction_params[:user_id],
+    @transaction.user_id = @user.id
+    @transaction.stock_count = @transaction.stock_count.to_i
+    @stock = Stock.find_or_create_by(user_id: @user.id,
                                      company_id: transaction_params[:company_id])
     @stock.shares ||= 0
 
     if !@user
-      return json: ['Not logged in'], status: 401
+      render json: ['Not logged in'], status: 401
     elsif @user.money < @transaction.price * @transaction.stock_count
-      return json: ['Not enough money'], status: 400
+      render json: ['Not enough money'], status: 400
     elsif @stock.shares + @transaction.stock_count < 0
-      return json: ['Cannot sell more shares than owned'], status: 400
+      render json: ['Cannot sell more shares than owned'], status: 400
     else
       @transaction.save
       @stock.update_attributes(shares: @transaction.stock_count)
