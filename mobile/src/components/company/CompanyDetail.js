@@ -4,7 +4,9 @@ import { View,
          StyleSheet,
          Modal,
          TouchableHighlight} from 'react-native';
-import TransactionModalForm from './transactionModalForm.js'
+
+import Chart from 'react-native-chart';
+import TransactionModalForm from './transactionModalForm.js';
 
 //TODO: Make Transaction form and add it to the MODAL
 
@@ -13,14 +15,17 @@ class CompanyDetail extends React.Component {
     super(props);
     this.state = {
               modalVisible: false,
-              modalVisible2: false }
+              modalVisible2: false };
 
     this.setModalVisible = this.setModalVisible.bind(this);
     this.setModalVisible2 = this.setModalVisible2.bind(this);
   }
 
   componentDidMount() {
+<<<<<<< HEAD
     // console.warn(this.props.companyId);
+=======
+>>>>>>> 894937c4cbcd9702fbcb87d9527cfad086e7fc54
     this.props.fetchCompany(this.props.companyId);
   }
 
@@ -34,27 +39,39 @@ class CompanyDetail extends React.Component {
 
   render() {
     return (
-      <View style={styles.view}>
-        <View style={styles.info}>
-          <Text style={styles.text}>{this.props.company.name}</Text>
-          <Text style={styles.text}>${this.props.company.price}</Text>
-          <Text style={styles.text}>{this.props.company.symbol}</Text>
-          <Text style={styles.text}>{this.props.company.price_percent_change}%</Text>
-        </View>
 
-        <View style={styles.buttons}>
-            <TouchableHighlight onPress={() => {
-                this.setModalVisible(true)
-              }}>
-              <Text style={styles.button}>Buy</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight onPress={() => {
-                this.setModalVisible2(true)
-              }}>
-              <Text style={styles.button}>Sell</Text>
-            </TouchableHighlight>
+      <View style={{marginTop:100}}>
+        <View style={{height:200, alignItems:'center', justifyContent: 'flex-start'}}>
+          <Chart
+             style={{width: 300}}
+             dataPointRadius={0}
+             lineWidth={2}
+             gridColor={'#DDD'}
+             tightBounds={true}
+             data={this.props.company.history}
+             verticalGridStep={4}
+             horizontalGridStep={3}
+             type="line"
+             showDataPoint={true}
+             color={'green'}
+          />
         </View>
+        <Text>{this.props.company.name}</Text>
+        <Text>${this.props.company.price}</Text>
+        <Text>{this.props.company.symbol}</Text>
+        <Text>{this.props.company.price_percent_change}%</Text>
+
+        <TouchableHighlight onPress={() => {
+            this.setModalVisible(true);
+          }}>
+          <Text>Buy</Text>
+        </TouchableHighlight>
+
+        <TouchableHighlight onPress={() => {
+            this.setModalVisible2(true);
+          }}>
+          <Text>Sell</Text>
+        </TouchableHighlight>
 
       <Modal
           animationType={"slide"}

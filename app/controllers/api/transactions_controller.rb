@@ -25,8 +25,8 @@ class Api::TransactionsController < ApplicationController
     else
       @transaction.save
       @stock.update_attributes(shares: @transaction.stock_count)
-      @user.update_attributes(money: - @transaction.price *
-                                       @transaction.stock_count)
+      @user.update_attributes(money: @user.money - @transaction.price *
+                                     @transaction.stock_count)
       render 'api/transactions/show'
     end
   end

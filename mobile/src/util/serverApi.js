@@ -95,7 +95,7 @@ export const fetchCompany = (id) => (
   getToken()
     .then(token => (
       fetch(
-        `http://localhost:3000/api/companies/${id}`,
+        `http://localhost:3000/api/companies/${id}.json`,
         {
           method: 'GET',
           headers: {
