@@ -31,13 +31,13 @@ class User < ApplicationRecord
     user
   end
 
-  def total_worth
+  def stock_worth
     stocks = self.stocks.includes(:company)
     stock_sum = 0
     stocks.each do |stock|
       stock_sum += stock.shares * stock.company.price
     end
-    self.money + stock_sum
+    stock_sum
   end
 
   def reset_session_token!
