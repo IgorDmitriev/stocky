@@ -8,11 +8,9 @@ import StockListContainer from '../stock/StockListContainer';
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 190,
+        marginTop: 70,
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: 'white'
     }
 });
 
@@ -30,5 +28,6 @@ class UserIndex extends React.Component {
      );
    }
 }
+
 
 export default UserIndex;

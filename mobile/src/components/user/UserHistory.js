@@ -10,7 +10,10 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   container: {
-    height: 200
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
   }
 });
 

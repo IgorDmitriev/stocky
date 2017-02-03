@@ -17,11 +17,12 @@ class StockList extends React.Component {
   render() {
     const stocks = this.ds.cloneWithRows(this.props.stocks);
     return(
-      <View>
+      <View style={{flex: 1, flexDirection: 'column'}}>
         <Text>Stocks Owned</Text>
         <ListView
           dataSource={stocks}
-          renderRow={(rowData) => <StockListItem navigator={this.props.navigator}
+          renderRow={(rowData) =>
+            <StockListItem navigator={this.props.navigator}
                                                  stock={rowData}/>}
         />
       </View>

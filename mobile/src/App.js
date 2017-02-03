@@ -23,7 +23,7 @@ export default class Stocky extends Component {
       case 'UserIndex':
         return <UserIndex navigator={ navigator }/>;
       case 'CompanyDetail':
-        return  <CompanyDetailContainer navigator={ navigator } companyId={route.companyId} />
+        return  <CompanyDetailContainer navigator={ navigator } companyId={route.companyId} />;
       case 'Search':
         return <SearchScene navigator={ navigator }/>;
       default:
@@ -74,7 +74,20 @@ export default class Stocky extends Component {
                   }
                 },
                RightButton: (route, navigator, index, navState) =>
-                 { return null; },
+                 { if (route.index === 3) {
+                   return null;
+                 } else {
+                   return (
+                     <TouchableHighlight onPress={() => {
+                         navigator.push({
+                           id: 'Search',
+                           index: 3,
+                           title: 'Search'});
+                       }}>
+                       <Text>Companies</Text>
+                     </TouchableHighlight>
+                    );
+                  }},
                Title: (route, navigator, index, navState) =>
                  { return (<Text>{route.title}</Text>); }
              }}
