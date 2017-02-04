@@ -6,13 +6,39 @@ import { StyleSheet,
 import UserHistoryContainer from './UserHistoryContainer';
 import StockListContainer from '../stock/StockListContainer';
 
+const user = {
+  total_worth: '120,000',
+  cash: '70,000',
+  stock_worth: '50,000'
+};
+
+
 const styles = StyleSheet.create({
     container: {
-        marginTop: 190,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
+      flex: 1,
+      flexDirection: 'column',
+      marginTop: 70,
+      backgroundColor: 'white'
+    },
+    userMoney: {
+      marginTop: 20,
+      marginBottom: 20,
+      flexDirection: 'row',
+      justifyContent: 'space-around'
+    },
+    worth: {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    label: {
+      fontSize: 12,
+      color: '#243743',
+      fontWeight: '500'
+    },
+    money: {
+      fontSize: 20,
+      color: '#243743',
     }
 });
 
@@ -25,10 +51,21 @@ class UserIndex extends React.Component {
      return (
        <View style={styles.container}>
         <UserHistoryContainer/>
+        <View style={styles.userMoney}>
+          <View style={styles.worth}>
+            <Text style={styles.label}>Cash</Text>
+            <Text style={styles.money}>{user.stock_worth}</Text>
+          </View>
+          <View style={styles.worth}>
+            <Text style={styles.label}>Stock Worth</Text>
+            <Text style={styles.money}>{user.cash}</Text>
+          </View>
+        </View>
         <StockListContainer navigator={this.props.navigator}/>
        </View>
      );
    }
 }
+
 
 export default UserIndex;

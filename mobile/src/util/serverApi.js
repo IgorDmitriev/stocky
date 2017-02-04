@@ -49,7 +49,7 @@ export const logout = () => (
 export const fetchUsersStocks = () => (
   getToken()
     .then(token => (
-      fetch('http://localhost:3000/api/stocks', {
+      fetch('http://localhost:3000/api/stocks.json', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

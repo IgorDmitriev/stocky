@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   Navigator,
   Text,
-  TouchableHighlight
+  TouchableHighlight,
+  StyleSheet
 } from 'react-native';
 import { Provider } from 'react-redux';
 import { LoginManager } from 'react-native-fbsdk';
@@ -23,7 +24,7 @@ export default class Stocky extends Component {
       case 'UserIndex':
         return <UserIndex navigator={ navigator }/>;
       case 'CompanyDetail':
-        return  <CompanyDetailContainer navigator={ navigator } companyId={route.companyId} />
+        return  <CompanyDetailContainer navigator={ navigator } companyId={route.companyId} />;
       case 'Search':
         return <SearchScene navigator={ navigator }/>;
       default:
@@ -36,7 +37,7 @@ export default class Stocky extends Component {
 
     const routes = [
       {id: 'Auth', index: 0, title: 'Login'},
-      {id: 'UserIndex', index: 1, title: 'My info'},
+      {id: 'UserIndex', index: 1, title: 'My Info'},
       {id: 'ComanyDetail', index: 2, title: 'Company'},
       {id: 'Search', index: 3, title: 'Search'}
     ];
@@ -44,7 +45,7 @@ export default class Stocky extends Component {
     return (
       <Provider store={ store }>
         <Navigator
-          style={{ flex: 1 }}
+          style={{flex:1}}
           initialRoute={ routes[0] }
           renderScene={ this.renderScene }
           initialRouteStack={ [routes[0]] }
@@ -62,26 +63,69 @@ export default class Stocky extends Component {
                           store.dispatch(requestLogout());
                           navigator.pop();
                         }}>
-                        <Text>Log out</Text>
+                        <Text style={styles.navLeft}>Log out</Text>
                       </TouchableHighlight>
                     );
                   } else {
                     return (
                       <TouchableHighlight onPress={() => navigator.pop()}>
-                        <Text>Back</Text>
+                        <Text style={styles.navLeft}>Back</Text>
                       </TouchableHighlight>
                     );
                   }
                 },
                RightButton: (route, navigator, index, navState) =>
-                 { return null; },
+                 { if (route.index === 3 || route.index === 0) {
+                   return null;
+                 } else {
+                   return (
+                     <TouchableHighlight onPress={() => {
+                         navigator.push({
+                           id: 'Search',
+                           index: 3,
+                           title: 'Search'});
+                       }}>
+                       <Text style={styles.navRight}>Companies</Text>
+                     </TouchableHighlight>
+                    );
+                  }},
                Title: (route, navigator, index, navState) =>
-                 { return (<Text>{route.title}</Text>); }
+                 { return (<Text style={styles.navTitle}>{route.title}</Text>); }
              }}
-             style={{backgroundColor: 'gray'}}
+             style={styles.navbar}
            />
           } />
       </Provider>
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+    navbar: {
+      flex: 1,
+      height: 60,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      backgroundColor: '#57BE85'
+    },
+    navTitle: {
+      color: '#243743',
+      marginTop: 5,
+      fontSize: 20
+    },
+    navLeft: {
+      color: '#243743',
+      marginLeft: 10,
+      marginTop: 10,
+      fontWeight: '500'
+    },
+    navRight: {
+      color: '#243743',
+      marginRight: 10,
+      marginTop: 10,
+      fontWeight: '500'
+    }
+
+});
