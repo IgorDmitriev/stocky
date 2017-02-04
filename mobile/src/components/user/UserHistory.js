@@ -4,6 +4,7 @@ import { View,
          Text } from 'react-native';
 import Chart from 'react-native-chart';
 
+
 const styles = StyleSheet.create({
   chart: {
     width: 300,
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
   },
   container: {
     height: 200,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: 'white',
   }
@@ -46,7 +47,7 @@ class UserHistory extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Net Worth</Text>
+        <Text>Total Worth</Text>
         <Chart
            style={styles.chart}
            dataPointRadius={0}

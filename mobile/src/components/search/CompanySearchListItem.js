@@ -6,7 +6,10 @@ import {
   TouchableHighlight } from 'react-native';
 
 const CompanySearchListItem =
-  ({ company, navigator }) => (
+  ({ company, navigator }) => {
+  const backgroundColor = company.price_percent_change < 0 ? 'rgba(241,103,69, 0.2)' : 'rgba(87,190,133, 0.2)'
+
+  return (
     <TouchableHighlight
       onPress={() => navigator.push({
         id: 'CompanyDetail',
@@ -14,7 +17,7 @@ const CompanySearchListItem =
         title: company.name,
         companyId: company.id
       })}>
-      <View style={styles.rowContainer}>
+      <View style={styles.rowContainer, {backgroundColor}}>
         <View style={styles.companyDetails}>
 
           <View>
@@ -34,6 +37,7 @@ const CompanySearchListItem =
       </View>
     </TouchableHighlight>
   );
+};
 
 const styles = StyleSheet.create({
   rowContainer: {
@@ -41,7 +45,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
     margin: 10
   },
   companyDetails: {

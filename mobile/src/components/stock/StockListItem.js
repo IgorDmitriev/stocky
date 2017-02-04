@@ -5,32 +5,51 @@ import { View,
          TouchableHighlight
        } from 'react-native';
 
-const StockListItem = ({navigator, stock}) => (
-  <TouchableHighlight
-    onPress={() => navigator.push({
-      id: 'CompanyDetail',
-      index: 2,
-      title: stock.companyName,
-      companyId: stock.companyId
-    })}>
-    <View style={styles.rowContainer}>
-      <View style={styles.companyDetails}>
+const stock = {
+  companyName: 'Apple Inc.',
+  companySymbol: 'AAPL',
+  price: '812',
+  price_percent_change: '-0.2',
+  shares: '10'
+};
 
-        <View>
-          <Text style={styles.symbol}>{stock.companyName}</Text>
+const StockListItem = ({navigator}) => {
+  const backgroundColor =
+    stock.price_percent_change[0] === '-' ? 'rgba(241,103,69, 0.5)' : 'rgba(87,190,133, 0.5)'
+
+  return (
+    <TouchableHighlight
+      onPress={() => navigator.push({
+        id: 'CompanyDetail',
+        index: 2,
+        title: stock.companyName,
+        companyId: stock.companyId
+      })}>
+      <View style={[styles.rowContainer, {backgroundColor}]}>
+        <View style={styles.companyDetails}>
+
+          <View style={{width: 100}}>
+            <Text style={styles.symbol}>{stock.companySymbol}</Text>
+            <Text style={styles.name}>{stock.companyName}</Text>
+          </View>
+
+          <View style={styles.numbers}>
+            <Text style={styles.price}>{stock.price}</Text>
+            <Text style={styles.percent}>{stock.price_percent_change}</Text>
+          </View>
+
+          <View style={styles.numbers}>
+            <Text style={styles.shares}>{stock.shares}</Text>
+          </View>
+
         </View>
-
-        <View style={styles.numbers}>
-          <Text style={styles.price}>{stock.shares}</Text>
+        <View style={styles.moreIcon}>
+          <Text>></Text>
         </View>
-
       </View>
-      <View style={styles.moreIcon}>
-        <Text>></Text>
-      </View>
-    </View>
-  </TouchableHighlight>
-);
+    </TouchableHighlight>
+  );
+};
 
 const styles = StyleSheet.create({
   rowContainer: {
@@ -38,29 +57,37 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
     margin: 10
   },
   companyDetails: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     paddingRight: 30
   },
   symbol: {
-    fontSize: 20
+    fontSize: 20,
+    color: '#243743'
   },
   name: {
-    fontSize: 12
+    fontSize: 12,
+    color: '#243743'
   },
   numbers: {
-    width: 70
+    width: 50,
+    alignItems: 'flex-end'
   },
   price: {
-    fontSize: 20
+    fontSize: 14,
+    color: '#243743'
   },
   percent: {
-    fontSize: 12
+    fontSize: 14,
+    color: '#243743'
+  },
+  shares: {
+    fontSize: 20,
+    color: '#243743'
   }
 });
 
