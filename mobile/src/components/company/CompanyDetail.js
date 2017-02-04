@@ -22,10 +22,6 @@ class CompanyDetail extends React.Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-    // console.warn(this.props.companyId);
-=======
->>>>>>> 894937c4cbcd9702fbcb87d9527cfad086e7fc54
     this.props.fetchCompany(this.props.companyId);
   }
 

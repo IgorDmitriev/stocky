@@ -8,7 +8,7 @@ export const receiveTransaction = transaction => ({
 });
 
 export const createTransaction = transaction => dispatch => (
-  serverAPI.createTransaction().then(resp => {
+  serverAPI.createTransaction(transaction).then(resp => {
     const transaction = JSON.parse(resp._bodyText);
     dispatch(receiveTransaction(transaction));
   })

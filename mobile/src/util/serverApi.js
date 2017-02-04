@@ -121,7 +121,7 @@ export const createTransaction = (data) => (
             'sessionToken': token
           },
           body: JSON.stringify({
-            data
+            transaction: data
           })
         }
       )
