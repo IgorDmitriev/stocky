@@ -75,9 +75,7 @@ export default class Stocky extends Component {
                   }
                 },
                RightButton: (route, navigator, index, navState) =>
-                 { if (route.index === 3 || route.index === 0) {
-                   return null;
-                 } else {
+                 { if (route.index === 1) {
                    return (
                      <TouchableHighlight onPress={() => {
                          navigator.push({

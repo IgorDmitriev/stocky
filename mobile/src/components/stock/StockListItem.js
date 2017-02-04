@@ -5,17 +5,20 @@ import { View,
          TouchableHighlight
        } from 'react-native';
 
-const stock = {
-  companyName: 'Apple Inc.',
-  companySymbol: 'AAPL',
-  price: '812',
-  price_percent_change: '-0.2',
-  shares: '10'
-};
+// const stock = {
+//   companyId: 1,
+//   companyName: 'Apple Inc.',
+//   companySymbol: 'AAPL',
+//   price: '812',
+//   price_percent_change: '-0.2',
+//   shares: '10'
+// };
 
-const StockListItem = ({navigator}) => {
+const StockListItem = ({navigator, stock}) => {
+  console.log('item');
+  console.log(stock);
   const backgroundColor =
-    stock.price_percent_change[0] === '-' ? 'rgba(241,103,69, 0.5)' : 'rgba(87,190,133, 0.5)'
+    stock.companyPercentChange < 0 ? 'rgba(241,103,69, 0.5)' : 'rgba(87,190,133, 0.5)'
 
   return (
     <TouchableHighlight
@@ -35,7 +38,7 @@ const StockListItem = ({navigator}) => {
 
           <View style={styles.numbers}>
             <Text style={styles.price}>{stock.price}</Text>
-            <Text style={styles.percent}>{stock.price_percent_change}</Text>
+            <Text style={styles.percent}>{stock.companyPercentChange}</Text>
           </View>
 
           <View style={styles.numbers}>
@@ -75,6 +78,7 @@ const styles = StyleSheet.create({
   },
   numbers: {
     width: 50,
+    flexDirection: 'column',
     alignItems: 'flex-end'
   },
   price: {
