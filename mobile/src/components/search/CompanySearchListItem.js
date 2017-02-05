@@ -17,7 +17,7 @@ const CompanySearchListItem =
         title: company.name,
         companyId: company.id
       })}>
-      <View style={styles.rowContainer, {backgroundColor}}>
+      <View style={[styles.rowContainer, {backgroundColor}]}>
         <View style={styles.companyDetails}>
 
           <View>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 10
+    padding: 5
   },
   companyDetails: {
     flex: 1,

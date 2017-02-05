@@ -6,6 +6,8 @@ import {
   Button
  } from 'react-native';
 
+
+
 class TransactionModalForm extends React.Component {
   constructor(props) {
     super(props);
@@ -19,19 +21,23 @@ class TransactionModalForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createTransaction(this.state)
+    let number = this.props.action === 'buy' ? '' : '-';
+    const transaction = {
+      ...this.state,
+      stock_count: number.concat(this.state.stock_count)
+    };
+    this.props.createTransaction(transaction)
       .then(() => this.props.setModalVisible(false));
   }
 
   render() {
-    let number = this.props.action === 'buy' ? '' : '-';
 
     return (
       <View style={{marginTop:100}}>
         <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
         onChangeText={(stock_count) => this.setState({stock_count})}
-        value={number.concat(this.state.stock_count)}
+        value={this.state.stock_count}
         />
 
         <Button
@@ -39,6 +45,12 @@ class TransactionModalForm extends React.Component {
         title="Submit"
         color="#841584"
         accessibilityLabel="Make Transaction"
+        />
+        <Button
+        onPress={() => this.props.setModalVisible(false)}
+        title="Cancel"
+        color="#841584"
+        accessibilityLabel="Cancel"
         />
 
       </View>

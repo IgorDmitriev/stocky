@@ -18,7 +18,7 @@ class StockList extends React.Component {
     const stocks = this.ds.cloneWithRows(this.props.stocks);
     return(
       <View style={{flex: 1, flexDirection: 'column'}}>
-        <Text style={{alignSelf: 'center', color: '#243743', fontWeight: '500'}}>My Stocks</Text>
+        <Text style={{alignSelf: 'center', color: '#243743', fontSize: 14, marginBottom: 10}}>My Stocks</Text>
         <ListView
           dataSource={stocks}
           enableEmptySections={true}

@@ -47,7 +47,7 @@ export default class Stocky extends Component {
         this.store.dispatch(requestUsersStocks());
         break;
       default:
-        return null
+        return null;
     }
   }
 

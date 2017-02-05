@@ -7,11 +7,11 @@ import Chart from 'react-native-chart';
 
 const styles = StyleSheet.create({
   chart: {
-    width: 300,
-    marginBottom: 30
+    width: 340,
+    marginBottom: 20
   },
   container: {
-    height: 200,
+    height: 150,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: 'white',
@@ -21,21 +21,9 @@ const styles = StyleSheet.create({
 class UserHistory extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   history: [[0,0]]
-    // };
   }
 
   componentDidMount() {
-    // this.props.fetchHistory().then(resp => {
-    //   console.log('history', resp);
-    //   this.setState({
-    //     history: this.props.history.map(hist => {
-    //      return [hist.date, hist.money];
-    //     })
-    //   });
-    // });
-    this.props.fetchHistory();
   }
 
   render() {
@@ -53,8 +41,11 @@ class UserHistory extends React.Component {
            yAxisTransform={data => `${parseInt(data / 1000)}K`}
            yAxisWidth={35}
            type="line"
+           fillColor={'rgba(87,190,133, 0.5)'}
            showDataPoint={true}
-           color={'green'}
+           showAxis={true}
+           verticalGridStep={4}
+           color={'rgba(87,190,133, 1)'}
         />
       </View>
     );

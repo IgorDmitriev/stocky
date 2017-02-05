@@ -18,7 +18,7 @@ const StockListItem = ({navigator, stock}) => {
   console.log('item');
   console.log(stock);
   const backgroundColor =
-    stock.companyPercentChange < 0 ? 'rgba(241,103,69, 0.5)' : 'rgba(87,190,133, 0.5)'
+    stock.companyPercentChange < 0 ? 'rgba(241,103,69, 0.2)' : 'rgba(87,190,133, 0.2)'
 
   return (
     <TouchableHighlight
@@ -41,7 +41,7 @@ const StockListItem = ({navigator, stock}) => {
             <Text style={styles.percent}>{stock.companyPercentChange}</Text>
           </View>
 
-          <View style={styles.numbers}>
+          <View style={styles.share}>
             <Text style={styles.shares}>x {stock.shares}</Text>
           </View>
 
@@ -60,13 +60,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 10
+    padding: 5
   },
   companyDetails: {
     flexDirection: 'row',
-    alignItems: 'center',
-    width: 300,
-    paddingRight: 30
+    alignItems: 'center'
   },
   symbol: {
     fontSize: 20,
@@ -80,6 +78,11 @@ const styles = StyleSheet.create({
     width: 50,
     flexDirection: 'column',
     alignItems: 'flex-end'
+  },
+  share: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    paddingLeft: 20
   },
   price: {
     fontSize: 14,

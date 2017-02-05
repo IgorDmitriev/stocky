@@ -26,11 +26,11 @@ const styles = StyleSheet.create({
     },
     label: {
       fontSize: 12,
-      color: '#243743',
+      color: '#777',
       fontWeight: '500'
     },
     money: {
-      fontSize: 20,
+      fontSize: 22,
       color: '#243743',
     }
 });
@@ -57,11 +57,11 @@ class UserIndex extends React.Component {
         <View style={styles.userMoney}>
           <View style={styles.worth}>
             <Text style={styles.label}>Cash</Text>
-            <Text style={styles.money}>{money}</Text>
+            <Text style={styles.money}>${money}</Text>
           </View>
           <View style={styles.worth}>
             <Text style={styles.label}>Stock Worth</Text>
-            <Text style={styles.money}>{stockWorth}</Text>
+            <Text style={styles.money}>${stockWorth}</Text>
           </View>
         </View>
         <StockListContainer navigator={this.props.navigator}/>
