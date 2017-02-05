@@ -22,7 +22,7 @@ Stocky was designed and built in a week.
 
 - ###### Backend technology
   + Rails
-    - Calculations and information done in backend
+    - Calculations and filled in information done in backend
     ```Ruby
       def index
         @transactions = Transaction.where('user_id = ? AND company_id = ?',
@@ -39,22 +39,21 @@ Stocky was designed and built in a week.
         @stock = Stock.find_or_create_by(user_id: @user.id,
                                          company_id: transaction_params[:company_id])
         @stock.shares ||= 0
-
-        if !@user
-          render json: ['Not logged in'], status: 401
-        elsif @user.money < @transaction.price * @transaction.stock_count
-          render json: ['Not enough money'], status: 400
-        elsif @stock.shares + @transaction.stock_count < 0
-          render json: ['Cannot sell more shares than owned'], status: 400
-        else
-          @transaction.save
-          @stock.update_attributes(shares: @transaction.stock_count)
-          @user.update_attributes(money: @user.money - @transaction.price *
-                                         @transaction.stock_count)
-          render 'api/transactions/show'
         end
       end
     ```
+    - Customized query to take filtered information from database
+    ```Ruby
+      def index
+        @stocks =
+          Stock
+            .where(user_id: current_user.id)
+            .where.not(shares: 0)
+            .includes(:company)
+      end
+    ```
+
+
   + Google Finance API
     - Requesting live real-world stock prices and other information
   + Database
