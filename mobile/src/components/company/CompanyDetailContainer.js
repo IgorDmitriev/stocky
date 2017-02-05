@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCompany: (id) => dispatch(fetchCompany(id)),
-  createTransaction: (transaction) => dispatch(createTransaction(transaction))
+  fetchCompany: id => dispatch(fetchCompany(id)),
+  createTransaction: transaction => dispatch(createTransaction(transaction))
 });
 
 export default connect(

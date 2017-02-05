@@ -52,22 +52,26 @@ class CompanyDetail extends React.Component {
              color={'green'}
           />
         </View>
-        <Text>{this.props.company.name}</Text>
-        <Text>${this.props.company.price}</Text>
-        <Text>{this.props.company.symbol}</Text>
-        <Text>{this.props.company.price_percent_change}%</Text>
+        <View style={{marginTop: 50, alignItems:'center', justifyContent: 'flex-start'}}>
+          <Text>{this.props.company.name}</Text>
+          <Text>${this.props.company.price}</Text>
+          <Text>{this.props.company.symbol}</Text>
+          <Text>{this.props.company.price_percent_change}%</Text>
+        </View>
 
-        <TouchableHighlight onPress={() => {
-            this.setModalVisible(true);
-          }}>
-          <Text>Buy</Text>
-        </TouchableHighlight>
+        <View style={{alignItems: 'center', flexDirection:'row', justifyContent:'space-around'}}>
+          <TouchableHighlight onPress={() => {
+              this.setModalVisible(true);
+            }}>
+            <Text>Buy</Text>
+          </TouchableHighlight>
 
-        <TouchableHighlight onPress={() => {
-            this.setModalVisible2(true);
-          }}>
-          <Text>Sell</Text>
-        </TouchableHighlight>
+          <TouchableHighlight onPress={() => {
+              this.setModalVisible2(true);
+            }}>
+            <Text>Sell</Text>
+          </TouchableHighlight>
+        </View>
 
       <Modal
           animationType={"slide"}
@@ -117,6 +121,7 @@ const styles = StyleSheet.create({
   },
   info: {
     marginTop: 100,
+    marginBot: 100 
   },
   text: {
     fontSize: 20
