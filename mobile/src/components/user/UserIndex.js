@@ -6,13 +6,6 @@ import { StyleSheet,
 import UserHistoryContainer from './UserHistoryContainer';
 import StockListContainer from '../stock/StockListContainer';
 
-const user = {
-  total_worth: '120,000',
-  cash: '70,000',
-  stock_worth: '50,000'
-};
-
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -45,7 +38,12 @@ const styles = StyleSheet.create({
 class UserIndex extends React.Component {
   constructor(props) {
     super(props);
-   }
+    this.state = {
+      total_worth: props.user.totalWorth,
+      cash: props.user.money,
+      stock_worth: props.user.stockWorth
+    };
+  }
 
    render() {
      return (
@@ -54,11 +52,11 @@ class UserIndex extends React.Component {
         <View style={styles.userMoney}>
           <View style={styles.worth}>
             <Text style={styles.label}>Cash</Text>
-            <Text style={styles.money}>{user.stock_worth}</Text>
+            <Text style={styles.money}>{this.state.cash}</Text>
           </View>
           <View style={styles.worth}>
             <Text style={styles.label}>Stock Worth</Text>
-            <Text style={styles.money}>{user.cash}</Text>
+            <Text style={styles.money}>{this.state.stock_worth}</Text>
           </View>
         </View>
         <StockListContainer navigator={this.props.navigator}/>

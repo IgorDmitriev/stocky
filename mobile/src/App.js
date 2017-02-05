@@ -11,7 +11,7 @@ import { LoginManager } from 'react-native-fbsdk';
 import configureStore from './store';
 import AuthScene from './components/auth/AuthSceneContainer';
 import SearchScene from './components/search/SearchSceneContainer';
-import UserIndex from './components/user/UserIndex';
+import UserIndexContainer from './components/user/UserIndexContainer';
 import CompanyDetailContainer from './components/company/CompanyDetailContainer';
 import { requestLogout } from './actions/userActions';
 
@@ -22,7 +22,7 @@ export default class Stocky extends Component {
       case 'Auth':
         return <AuthScene navigator={ navigator }/>;
       case 'UserIndex':
-        return <UserIndex navigator={ navigator }/>;
+        return <UserIndexContainer navigator={ navigator }/>;
       case 'CompanyDetail':
         return  <CompanyDetailContainer navigator={ navigator } companyId={route.companyId} />;
       case 'Search':
