@@ -19,7 +19,8 @@ class TransactionModalForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createTransaction(this.state).then(() => this.props.setModalVisible(false));
+    this.props.createTransaction(this.state)
+      .then(() => this.props.setModalVisible(false));
   }
 
   render() {

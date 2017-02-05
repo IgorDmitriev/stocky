@@ -1,8 +1,13 @@
 import { connect } from 'react-redux';
 import UserIndex from './UserIndex';
+import { requestUserInfo } from '../../actions/userActions';
 
 const mapStateToProps = state => ({
   user: state.currentUser
 });
 
-export default connect(mapStateToProps)(UserIndex);
+const mapDispatchToProps = dispatch => ({
+  requestUserInfo: () => dispatch(requestUserInfo())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserIndex);

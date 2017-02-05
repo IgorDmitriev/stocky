@@ -31,18 +31,18 @@ const StockListItem = ({navigator, stock}) => {
       <View style={[styles.rowContainer, {backgroundColor}]}>
         <View style={styles.companyDetails}>
 
-          <View style={{width: 100}}>
+          <View style={{width: 200}}>
             <Text style={styles.symbol}>{stock.companySymbol}</Text>
             <Text style={styles.name}>{stock.companyName}</Text>
           </View>
 
           <View style={styles.numbers}>
-            <Text style={styles.price}>{stock.price}</Text>
+            <Text style={styles.price}>{stock.companyPrice}</Text>
             <Text style={styles.percent}>{stock.companyPercentChange}</Text>
           </View>
 
           <View style={styles.numbers}>
-            <Text style={styles.shares}>{stock.shares}</Text>
+            <Text style={styles.shares}>x {stock.shares}</Text>
           </View>
 
         </View>
@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
   },
   companyDetails: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    width: 300,
     paddingRight: 30
   },
   symbol: {

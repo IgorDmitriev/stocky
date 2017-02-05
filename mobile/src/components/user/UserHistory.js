@@ -21,22 +21,26 @@ const styles = StyleSheet.create({
 class UserHistory extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      history: [[0,0]]
-    };
+    // this.state = {
+    //   history: [[0,0]]
+    // };
   }
 
   componentDidMount() {
-    this.props.fetchHistory().then(resp => {
-      this.setState({
-        history: this.props.history.map(hist => {
-         return [hist.date, hist.money];
-        })
-      });
-    });
+    // this.props.fetchHistory().then(resp => {
+    //   console.log('history', resp);
+    //   this.setState({
+    //     history: this.props.history.map(hist => {
+    //      return [hist.date, hist.money];
+    //     })
+    //   });
+    // });
+    this.props.fetchHistory();
   }
 
   render() {
+    const { history } = this.props;
+    console.log('render history', history);
     return (
       <View style={styles.container}>
         <Text>Total Worth</Text>
@@ -45,7 +49,7 @@ class UserHistory extends React.Component {
            dataPointRadius={0}
            lineWidth={2}
            gridColor={'#DDD'}
-           data={this.state.history}
+           data={history}
            yAxisTransform={data => `${parseInt(data / 1000)}K`}
            yAxisWidth={35}
            type="line"

@@ -45,18 +45,23 @@ class UserIndex extends React.Component {
     };
   }
 
+  componentDidMount () {
+  }
+
    render() {
+     console.log('current user', this.props.user);
+     const { money, stockWorth } = this.props.user;
      return (
        <View style={styles.container}>
         <UserHistoryContainer/>
         <View style={styles.userMoney}>
           <View style={styles.worth}>
             <Text style={styles.label}>Cash</Text>
-            <Text style={styles.money}>{this.state.cash}</Text>
+            <Text style={styles.money}>{money}</Text>
           </View>
           <View style={styles.worth}>
             <Text style={styles.label}>Stock Worth</Text>
-            <Text style={styles.money}>{this.state.stock_worth}</Text>
+            <Text style={styles.money}>{stockWorth}</Text>
           </View>
         </View>
         <StockListContainer navigator={this.props.navigator}/>

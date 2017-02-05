@@ -24,7 +24,7 @@ class Api::TransactionsController < ApplicationController
       render json: ['Cannot sell more shares than owned'], status: 400
     else
       @transaction.save
-      @stock.update_attributes(shares: @transaction.stock_count)
+      @stock.update_attributes(shares: @stock.shares + @transaction.stock_count)
       @user.update_attributes(money: @user.money - @transaction.price *
                                      @transaction.stock_count)
       render 'api/transactions/show'

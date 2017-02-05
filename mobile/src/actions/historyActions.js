@@ -8,10 +8,7 @@ export const receiveHistory = history => ({
 });
 
 export const requestHistory = () => dispatch => {
-  return fetchHistory().then(
-    (resp) => {
-      const history = JSON.parse(resp._bodyText);
-      return dispatch(receiveHistory(history));
-    }
-  );
+  return fetchHistory()
+    .then(resp => resp.json())
+    .then(json => dispatch(receiveHistory(json)));
 };

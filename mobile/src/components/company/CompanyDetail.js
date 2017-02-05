@@ -80,6 +80,7 @@ class CompanyDetail extends React.Component {
             company={this.props.company}
             setModalVisible={this.setModalVisible}
             createTransaction={this.props.createTransaction}
+            fetchUsersStocks={this.props.fetchUsersStocks}
             action='buy'/>
 
       </Modal>
