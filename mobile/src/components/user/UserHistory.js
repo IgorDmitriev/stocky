@@ -18,30 +18,22 @@ const styles = StyleSheet.create({
   }
 });
 
-let data = [
-        ['1/1', 100],
-        ['1/2', 300],
-        ['1/3', 200],
-        ['1/4', 500],
-        ['1/5', 400],
-        ['1/6', 500],
-        ['1/7', 700],
-        ['1/8', 600],
-      ];
-
-
 class UserHistory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      history: this.props.history.map(hist => (
-        [hist.date, hist.money]
-      ))
+      history: [[0,0]]
     };
   }
 
   componentDidMount() {
-    this.props.fetchHistory();
+    this.props.fetchHistory().then(resp => {
+      this.setState({
+        history: this.props.history.map(hist => {
+         return [hist.date, hist.money];
+        })
+      });
+    });
   }
 
   render() {
@@ -53,7 +45,9 @@ class UserHistory extends React.Component {
            dataPointRadius={0}
            lineWidth={2}
            gridColor={'#DDD'}
-           data={data}
+           data={this.state.history}
+           yAxisTransform={data => `${parseInt(data / 1000)}K`}
+           yAxisWidth={35}
            type="line"
            showDataPoint={true}
            color={'green'}
