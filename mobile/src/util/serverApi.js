@@ -9,7 +9,7 @@ async function getToken() {
       console.warn('No session token');
     }
   } catch (error) {
-    console.warn('Error when getting session token');
+    console.warn('Error when getting session token in ServerAPI');
   }
 }
 
@@ -64,6 +64,20 @@ export const fetchHistory = () => (
   getToken()
     .then(token => (
         fetch('http://localhost:3000/api/histories', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'sessionToken': token
+          }
+        })
+    ))
+);
+
+export const fetchUserInfo = () => (
+  getToken()
+    .then(token => (
+        fetch('http://localhost:3000/api/user', {
           method: 'GET',
           headers: {
             'Accept': 'application/json',

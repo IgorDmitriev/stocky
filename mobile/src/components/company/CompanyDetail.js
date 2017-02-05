@@ -5,10 +5,10 @@ import { View,
          Modal,
          TouchableHighlight} from 'react-native';
 
+
 import Chart from 'react-native-chart';
 import TransactionModalForm from './transactionModalForm.js';
-
-//TODO: Make Transaction form and add it to the MODAL
+import { MKButton, MKColor } from 'react-native-material-kit';
 
 class CompanyDetail extends React.Component {
   constructor(props) {
@@ -35,21 +35,19 @@ class CompanyDetail extends React.Component {
 
   render() {
     return (
-
-      <View style={{marginTop:100}}>
+      <View style={{marginTop: 70, flexDirection: 'column'}}>
         <View style={{height:200, alignItems:'center', justifyContent: 'flex-start'}}>
           <Chart
-             style={{width: 300}}
+             style={{width: 300, marginBottom: 20}}
              dataPointRadius={0}
              lineWidth={2}
              gridColor={'#DDD'}
              tightBounds={true}
              data={this.props.company.history}
-             verticalGridStep={4}
-             horizontalGridStep={3}
-             type="line"
+             type={"line"}
              showDataPoint={true}
-             color={'green'}
+             fillColor={'rgba(87,190,133, 0.5)'}
+             color={'rgba(87,190,133, 1)'}
           />
         </View>
         <View style={{marginTop: 50, alignItems:'center', justifyContent: 'flex-start'}}>
@@ -71,6 +69,69 @@ class CompanyDetail extends React.Component {
             }}>
             <Text>Sell</Text>
           </TouchableHighlight>
+
+        <View style={styles.infoline}>
+          <Text style={styles.lineLabel}>Company Name:</Text>
+          <Text style={styles.lineValue}>{this.props.company.name}</Text>
+        </View>
+        <View style={styles.infoline}>
+          <Text style={styles.lineLabel}>Company Symbol:</Text>
+          <Text style={styles.lineValue}>{this.props.company.symbol}</Text>
+        </View>
+        <View style={styles.infoline}>
+          <Text style={styles.lineLabel}>Price:</Text>
+          <Text style={styles.lineValue}>${this.props.company.price}</Text>
+        </View>
+        <View style={styles.infoline}>
+          <Text style={styles.lineLabel}>Change since Yesterday:</Text>
+          <Text style={styles.lineValue}>{this.props.company.price_percent_change}%</Text>
+        </View>
+
+        <View style={styles.buttons}>
+          <MKButton
+            style={{
+              width: 100,
+              height: 60,
+              borderRadius: 50,
+              justifyContent: 'center',
+              alignItems: 'center'}}
+            backgroundColor={'rgba(87,190,133, 1)'}
+            shadowRadius={1}
+            shadowOffset={{width:0, height:1}}
+            shadowOpacity={.7}
+            shadowColor="black"
+            onPress={() => {
+                this.setModalVisible(true);
+              }}
+            >
+            <Text pointerEvents="none"
+                  style={{color: 'white', fontWeight: 'bold'}}>
+              BUY
+            </Text>
+          </MKButton>
+
+          <MKButton
+            style={{
+              width: 100,
+              height: 60,
+              borderRadius: 50,
+              justifyContent: 'center',
+              alignItems: 'center'}}
+            backgroundColor={'rgba(87,190,133, 1)'}
+            shadowRadius={1}
+            shadowOffset={{width:0, height:1}}
+            shadowOpacity={.7}
+            shadowColor="black"
+            onPress={() => {
+                this.setModalVisible2(true);
+              }}
+            >
+            <Text pointerEvents="none"
+                  style={{color: 'white', fontWeight: 'bold',}}>
+              SELL
+            </Text>
+          </MKButton>
+
         </View>
 
       <Modal
@@ -98,7 +159,7 @@ class CompanyDetail extends React.Component {
           <TransactionModalForm
             company={this.props.company}
             setModalVisible={this.setModalVisible2}
-            createTransaction={this.createTransaction}
+            createTransaction={this.props.createTransaction}
             action='sell'/>
 
       </Modal>
@@ -121,22 +182,32 @@ const styles = StyleSheet.create({
   },
   info: {
     marginTop: 100,
-    marginBot: 100 
+    marginBot: 100
   },
   text: {
     fontSize: 20
   },
+
   buttons: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    margin: 20
+    alignItems: 'center',
+    marginTop: 50
   },
-  button: {
-    color: '#00BFFF',
-    margin: 20,
-    fontSize: 18,
-    borderWidth: 1,
+  infoline: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: 10,
+    marginRight: 20,
+    marginLeft: 20
+  },
+
+  lineLabel: {
+    fontSize: 14
+  },
+  lineValue: {
+    fontSize: 20
   }
 })
 

@@ -22,6 +22,12 @@ export const requestLogin = (data) => dispatch => {
   );
 };
 
+export const requestUserInfo = () => dispatch => {
+  return serverAPI.fetchUserInfo()
+    .then(resp => resp.json())
+    .then(json => dispatch(receiveCurrentUser(json)));
+};
+
 export const requestLogout = () => dispatch => {
   return serverAPI.logout().then(
     () => dispatch(receiveCurrentUser(_nullUser))

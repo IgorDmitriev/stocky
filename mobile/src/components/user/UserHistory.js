@@ -7,44 +7,28 @@ import Chart from 'react-native-chart';
 
 const styles = StyleSheet.create({
   chart: {
-    width: 300,
-    marginBottom: 30
+    width: 340,
+    marginBottom: 20
   },
   container: {
-    height: 200,
+    height: 150,
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: 'white',
   }
 });
 
-let data = [
-        ['1/1', 100],
-        ['1/2', 300],
-        ['1/3', 200],
-        ['1/4', 500],
-        ['1/5', 400],
-        ['1/6', 500],
-        ['1/7', 700],
-        ['1/8', 600],
-      ];
-
-
 class UserHistory extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      history: this.props.history.map(hist => (
-        [hist.date, hist.money]
-      ))
-    };
   }
 
   componentDidMount() {
-    this.props.fetchHistory();
   }
 
   render() {
+    const { history } = this.props;
+    console.log('render history', history);
     return (
       <View style={styles.container}>
         <Text>Total Worth</Text>
@@ -53,10 +37,15 @@ class UserHistory extends React.Component {
            dataPointRadius={0}
            lineWidth={2}
            gridColor={'#DDD'}
-           data={data}
+           data={history}
+           yAxisTransform={data => `${parseInt(data / 1000)}K`}
+           yAxisWidth={35}
            type="line"
+           fillColor={'rgba(87,190,133, 0.5)'}
            showDataPoint={true}
-           color={'green'}
+           showAxis={true}
+           verticalGridStep={4}
+           color={'rgba(87,190,133, 1)'}
         />
       </View>
     );

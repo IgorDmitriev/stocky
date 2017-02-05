@@ -11,20 +11,27 @@ import { LoginManager } from 'react-native-fbsdk';
 import configureStore from './store';
 import AuthScene from './components/auth/AuthSceneContainer';
 import SearchScene from './components/search/SearchSceneContainer';
-import UserIndex from './components/user/UserIndex';
+import UserIndexContainer from './components/user/UserIndexContainer';
 import CompanyDetailContainer from './components/company/CompanyDetailContainer';
-import { requestLogout } from './actions/userActions';
+import { requestLogout, requestUserInfo } from './actions/userActions';
+import { requestHistory } from './actions/historyActions';
+import { requestUsersStocks } from './actions/stockActions';
 
 export default class Stocky extends Component {
+  constructor () {
+    super();
+    this.store = configureStore();
+    this.handleFocusScene = this.handleFocusScene.bind(this);
+  }
 
   renderScene (route, navigator) {
     switch (route.id) {
       case 'Auth':
         return <AuthScene navigator={ navigator }/>;
       case 'UserIndex':
-        return <UserIndex navigator={ navigator }/>;
+        return <UserIndexContainer navigator={ navigator }/>;
       case 'CompanyDetail':
-        return  <CompanyDetailContainer navigator={ navigator } companyId={route.companyId} />;
+        return <CompanyDetailContainer navigator={ navigator } companyId={route.companyId} />;
       case 'Search':
         return <SearchScene navigator={ navigator }/>;
       default:
@@ -32,8 +39,20 @@ export default class Stocky extends Component {
     }
   }
 
+  handleFocusScene (route) {
+    switch (route.id) {
+      case 'UserIndex':
+        this.store.dispatch(requestUserInfo());
+        this.store.dispatch(requestHistory());
+        this.store.dispatch(requestUsersStocks());
+        break;
+      default:
+        return null;
+    }
+  }
+
   render() {
-    const store = configureStore();
+    const store = this.store;
 
     const routes = [
       {id: 'Auth', index: 0, title: 'Login'},
@@ -49,6 +68,7 @@ export default class Stocky extends Component {
           initialRoute={ routes[0] }
           renderScene={ this.renderScene }
           initialRouteStack={ [routes[0]] }
+          onWillFocus={ this.handleFocusScene }
           navigationBar={
            <Navigator.NavigationBar
              routeMapper={{

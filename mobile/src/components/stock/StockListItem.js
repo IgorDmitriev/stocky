@@ -18,7 +18,7 @@ const StockListItem = ({navigator, stock}) => {
   console.log('item');
   console.log(stock);
   const backgroundColor =
-    stock.companyPercentChange < 0 ? 'rgba(241,103,69, 0.5)' : 'rgba(87,190,133, 0.5)'
+    stock.companyPercentChange < 0 ? 'rgba(241,103,69, 0.2)' : 'rgba(87,190,133, 0.2)'
 
   return (
     <TouchableHighlight
@@ -31,18 +31,18 @@ const StockListItem = ({navigator, stock}) => {
       <View style={[styles.rowContainer, {backgroundColor}]}>
         <View style={styles.companyDetails}>
 
-          <View style={{width: 100}}>
+          <View style={{width: 200}}>
             <Text style={styles.symbol}>{stock.companySymbol}</Text>
             <Text style={styles.name}>{stock.companyName}</Text>
           </View>
 
           <View style={styles.numbers}>
-            <Text style={styles.price}>{stock.price}</Text>
+            <Text style={styles.price}>{stock.companyPrice}</Text>
             <Text style={styles.percent}>{stock.companyPercentChange}</Text>
           </View>
 
-          <View style={styles.numbers}>
-            <Text style={styles.shares}>{stock.shares}</Text>
+          <View style={styles.share}>
+            <Text style={styles.shares}>x {stock.shares}</Text>
           </View>
 
         </View>
@@ -60,13 +60,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 10
+    padding: 5
   },
   companyDetails: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingRight: 30
+    alignItems: 'center'
   },
   symbol: {
     fontSize: 20,
@@ -80,6 +78,11 @@ const styles = StyleSheet.create({
     width: 50,
     flexDirection: 'column',
     alignItems: 'flex-end'
+  },
+  share: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    paddingLeft: 20
   },
   price: {
     fontSize: 14,
