@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   View,
+  Image,
   Text,
   StyleSheet,
   AsyncStorage
@@ -33,10 +34,10 @@ class AuthScene extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Text>Welcome { this.props.currentUser.fullName }</Text>
+      <Image source={require('../../images/authBackground.jpeg')} style={styles.container}>
+        <Image source={require('../../images/logo.png')} style={styles.logo} />
         <Login login={ this.props.login } navigator={ this.props.navigator }/>
-      </View>
+      </Image>
     );
   }
 }
@@ -44,9 +45,15 @@ class AuthScene extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    width: null,
+    height: null
+  },
+  logo: {
+    width: 250,
+    height: 131,
+    marginBottom: 200
   }
 });
 

@@ -36,6 +36,7 @@ class Login extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
+    marginBottom: 100,
     width: 300,
     height: 50
   }
