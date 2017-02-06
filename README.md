@@ -9,7 +9,7 @@ give users a safe way to experiment in trading stock.
 - Real-World value of stock prices for better experience
 - User profile page with current statistics
 - Stocks and User details visualization with graph
-- Leaderboard of all users with their amount of money
+- Leaderboard of all users with ranked on amount of money
 
 ## Project Design
 Stocky was designed and built in a week.
@@ -63,3 +63,5 @@ Stocky was designed and built in a week.
 
 - ###### Frontend technology
   + JavaScript and React Native
+    - Uses the components to keep renders organized and reusable. Action, API util, reducers, and store
+  
