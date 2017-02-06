@@ -67,9 +67,26 @@ Stocky was designed and built in a week.
     - Requesting live real-world stock prices and other information
   + Database
     - PostgreSQL
+    - 5 different tables (companies, histories, stocks, users, transactions)
   + jBuilder
     - To manipulate hash structures in JSON format
 
 - ###### Frontend technology
   + JavaScript and React Native
     - Uses the components to keep renders organized and reusable. Action, API util, reducers, and store
+    - To make the connection more secure
+    ```javascript
+    import { AsyncStorage } from 'react-native';
+    async function getToken() {
+      try {
+        const value = await AsyncStorage.getItem('sessionToken');
+        if (value !== null){
+          return value;
+        } else {
+          console.warn('No session token');
+        }
+      } catch (error) {
+        console.warn('Error when getting session token in ServerAPI');
+      }
+    }
+    ```
