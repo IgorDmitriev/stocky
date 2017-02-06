@@ -1,5 +1,11 @@
 # Stocky
 
+[Live Demo][LandingPage]
+
+[LandingPage]: https://launchkit.io/websites/lly5XP4d3J8/
+
+![auth](mobile/src/images/auth.png)![userIndex](mobile/src/images/userIndex.png)
+
 Stocky is a mobile application built using Ruby on Rains on the backend, PostgreSQL database, and React-native/Redux on the frontend. In this application, users can trade/sell stock at real-world prices with fake money. It is a fun game, that can also
 give users a safe way to experiment in trading stock.
 
@@ -10,6 +16,9 @@ give users a safe way to experiment in trading stock.
 - User profile page with current statistics
 - Stocks and User details visualization with graph
 - Leaderboard of all users with ranked on amount of money
+
+![searchCompanies](mobile/src/images/searchCompanies.png)![companyDetails](mobile/src/images/companyDetails.png)
+
 
 ## Project Design
 Stocky was designed and built in a week.
@@ -64,4 +73,3 @@ Stocky was designed and built in a week.
 - ###### Frontend technology
   + JavaScript and React Native
     - Uses the components to keep renders organized and reusable. Action, API util, reducers, and store
-  
