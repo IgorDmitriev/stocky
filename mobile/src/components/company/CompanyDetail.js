@@ -50,6 +50,25 @@ class CompanyDetail extends React.Component {
              color={'rgba(87,190,133, 1)'}
           />
         </View>
+        <View style={{marginTop: 50, alignItems:'center', justifyContent: 'flex-start'}}>
+          <Text>{this.props.company.name}</Text>
+          <Text>${this.props.company.price}</Text>
+          <Text>{this.props.company.symbol}</Text>
+          <Text>{this.props.company.price_percent_change}%</Text>
+        </View>
+
+        <View style={{alignItems: 'center', flexDirection:'row', justifyContent:'space-around'}}>
+          <TouchableHighlight onPress={() => {
+              this.setModalVisible(true);
+            }}>
+            <Text>Buy</Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight onPress={() => {
+              this.setModalVisible2(true);
+            }}>
+            <Text>Sell</Text>
+          </TouchableHighlight>
 
         <View style={styles.infoline}>
           <Text style={styles.lineLabel}>Company Name:</Text>
@@ -152,6 +171,23 @@ class CompanyDetail extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  view: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    margin:100,
+    marginTop: 250
+  },
+  info: {
+    marginTop: 100,
+    marginBot: 100
+  },
+  text: {
+    fontSize: 20
+  },
+
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-around',
