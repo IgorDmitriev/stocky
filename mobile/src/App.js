@@ -55,11 +55,54 @@ export default class Stocky extends Component {
     const store = this.store;
 
     const routes = [
-      {id: 'Auth', index: 0, title: 'Login'},
+      {id: 'Auth', index: 0, title: 'Stocky'},
       {id: 'UserIndex', index: 1, title: 'My Info'},
       {id: 'ComanyDetail', index: 2, title: 'Company'},
       {id: 'Search', index: 3, title: 'Search'}
     ];
+
+    const navbar = <Navigator.NavigationBar
+                 routeMapper={{
+                   LeftButton: (route, navigator, index, navState) =>
+                    {
+                      if (route.index === 0) {
+                        return null;
+                      } else if (route.index === 1) {
+                        return (
+                          <TouchableHighlight onPress={() => {
+                              LoginManager.logOut();
+                              store.dispatch(requestLogout());
+                              navigator.pop();
+                            }}>
+                            <Text style={styles.navLeft}>Log out</Text>
+                          </TouchableHighlight>
+                        );
+                      } else {
+                        return (
+                          <TouchableHighlight onPress={() => navigator.pop()}>
+                            <Text style={styles.navLeft}>Back</Text>
+                          </TouchableHighlight>
+                        );
+                      }
+                    },
+                   RightButton: (route, navigator, index, navState) =>
+                     { if (route.index === 1) {
+                       return (
+                         <TouchableHighlight onPress={() => {
+                             navigator.push({
+                               id: 'Search',
+                               index: 3,
+                               title: 'Search'});
+                           }}>
+                           <Text style={styles.navRight}>Companies</Text>
+                         </TouchableHighlight>
+                        );
+                      }},
+                   Title: (route, navigator, index, navState) =>
+                     { return (<Text style={styles.navTitle}>{route.title}</Text>); }
+                 }}
+                 style={styles.navbar}
+               />;
 
     return (
       <Provider store={ store }>
@@ -69,50 +112,7 @@ export default class Stocky extends Component {
           renderScene={ this.renderScene }
           initialRouteStack={ [routes[0]] }
           onWillFocus={ this.handleFocusScene }
-          navigationBar={
-           <Navigator.NavigationBar
-             routeMapper={{
-               LeftButton: (route, navigator, index, navState) =>
-                {
-                  if (route.index === 0) {
-                    return null;
-                  } else if (route.index === 1) {
-                    return (
-                      <TouchableHighlight onPress={() => {
-                          LoginManager.logOut();
-                          store.dispatch(requestLogout());
-                          navigator.pop();
-                        }}>
-                        <Text style={styles.navLeft}>Log out</Text>
-                      </TouchableHighlight>
-                    );
-                  } else {
-                    return (
-                      <TouchableHighlight onPress={() => navigator.pop()}>
-                        <Text style={styles.navLeft}>Back</Text>
-                      </TouchableHighlight>
-                    );
-                  }
-                },
-               RightButton: (route, navigator, index, navState) =>
-                 { if (route.index === 1) {
-                   return (
-                     <TouchableHighlight onPress={() => {
-                         navigator.push({
-                           id: 'Search',
-                           index: 3,
-                           title: 'Search'});
-                       }}>
-                       <Text style={styles.navRight}>Companies</Text>
-                     </TouchableHighlight>
-                    );
-                  }},
-               Title: (route, navigator, index, navState) =>
-                 { return (<Text style={styles.navTitle}>{route.title}</Text>); }
-             }}
-             style={styles.navbar}
-           />
-          } />
+          navigationBar={navbar} />
       </Provider>
     );
   }
